@@ -5,7 +5,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <header>
 
-    <div class="wrapper">
+    <div class="wrapper ">
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
@@ -35,7 +35,7 @@ nav {
 }
 
 nav a.router-link-exact-active {
-  color: var(--color-text);
+  //color: var(--color-text);
 }
 
 nav a.router-link-exact-active:hover {
@@ -45,7 +45,7 @@ nav a.router-link-exact-active:hover {
 nav a {
   display: inline-block;
   padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+ // border-left: 1px solid var(--color-border);
 }
 
 nav a:first-of-type {
@@ -56,7 +56,7 @@ nav a:first-of-type {
   header {
     display: flex;
     place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    //padding-right: calc(var(--section-gap) / 2);
   }
 
   .logo {
