@@ -15,6 +15,7 @@ export default {
 </script>
 
 <template>
+  <RouterView />
   <pv-toast></pv-toast>
   <header>
     <pv-toolbar class="bg-primary">
@@ -24,7 +25,7 @@ export default {
             icon="pi pi-bars"
             @click="drawer = !drawer"
         ></pv-button>
-        <h3>ACME Learning Center</h3>
+        <h3>Expert</h3>
       </template>
       <template #end>
         <div class="flex-column">
@@ -46,7 +47,6 @@ export default {
     </pv-toolbar>
   </header>
   <pv-sidebar v-model:visible="drawer"> </pv-sidebar>
-  <RouterView />
 </template>
 <style scoped>
 </style>
