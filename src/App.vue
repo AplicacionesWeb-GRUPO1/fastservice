@@ -24,7 +24,5 @@ export default {
 <home-component></home-component>
   <SideMenu></SideMenu>
   <myclient-component></myclient-component>
-
 </template>
 <style scoped>
-</style>
