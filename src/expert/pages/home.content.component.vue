@@ -174,14 +174,26 @@ img {
   gap: 20px;
 }
 
+.customer-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
 .customer-card {
   width: calc(20% - 20px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+  align-content: center;
+  justify-content: center;
 }
 
 .customer-image {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .customer-image img {
