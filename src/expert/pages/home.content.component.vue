@@ -16,9 +16,9 @@
     <section>
       <h2>Herramientas y Suministros</h2>
       <div class="tool-cards">
-        <Card class="tool">
-          <i class="pi pi-desktop"></i>
-        </Card>
+          <Card class="tool">
+            <i class="pi pi-desktop"></i>
+          </Card>
         <Card class="tool">
           <i class="pi pi-sun"></i>
         </Card>
@@ -43,6 +43,7 @@
     <section>
       <h2>Publicaciones de Clientes</h2>
       <div class="customer-cards">
+
         <Card class="customer-card">
           <div class="customer-image">
             <img src="@/expert/img/cliente%201.png" alt="Customer 1" />

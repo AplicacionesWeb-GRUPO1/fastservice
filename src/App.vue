@@ -2,9 +2,18 @@
 import Home from "@/views/HomeView.vue";
 import SideMenu from "@/expert/pages/aside.component.vue"
 import HomeContent from "@/expert/pages/home.content.component.vue"
+import PageShowAppointmentsContent from "@/clients/ExpertsAppointmentsScreen/pageShowAppointments-conten.component.vue";
+import UsersProfileCardContent from "@/GeneralComponents/usersProfileCard-content.component.vue";
+import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.component.vue";
+import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
+
 export default {
   name: "app",
   components: {
+    PageFavoritesExperts,
+    GridProfilesContent,
+    UsersProfileCardContent,
+    PageShowAppointmentsContent,
     Home,
     SideMenu,
     HomeContent,
@@ -19,6 +28,8 @@ export default {
 
 <template>
 <home-component></home-component>
-  <SideMenu></SideMenu>
-  <home-content></home-content>
+  <page-favorites-experts></page-favorites-experts>
 </template>
+
+
+
