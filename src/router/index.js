@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import PageShowAppointmentsContent from "@/clients/ExpertsAppointmentsScreen/pageShowAppointments-conten.component.vue";
 import UsersProfileCardContent from "@/GeneralComponents/usersProfileCard-content.component.vue";
 import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.component.vue";
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
 import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.component.vue";
 import HomeContent from "@/expert/pages/home.content.component.vue";
+
 
 
 //routes

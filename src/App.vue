@@ -7,6 +7,7 @@
         <img src="https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png" alt="Profile Image" class="profile-image"/>
         </router-link>
 
+
         <div class="profile-info">
           <div class="profile-name">John Murphy</div>
           <div class="profile-phone"><i class="pi pi-phone"></i>123-456-7890</div>
