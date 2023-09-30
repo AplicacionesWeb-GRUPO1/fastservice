@@ -1,6 +1,10 @@
 <script>
 export default {
-  name: "navBar"
+  name: "navBar",
+  props:{
+    name: String,
+    cellphone: String
+  }
 };
 </script>
 
@@ -23,7 +27,7 @@ export default {
           <i class="pi pi-bars"></i>
           <br />
           <i class="pi pi-user" style="color: #708090"></i>
-          <h3>John Murphy</h3>
+          <h3>{{name}}</h3>
         </div>
       </template>
     </pv-toolbar>
