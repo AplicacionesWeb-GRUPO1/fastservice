@@ -40,7 +40,9 @@
       </ul>
     </div>
   </div>
+
   <div class="content">
+    <nav-bar></nav-bar>
     <router-view></router-view>
   </div>
 
@@ -48,10 +50,10 @@
 
 <script>
 import HomeContent from "@/expert/pages/home.content.component.vue";
-
+import navBar from "@/expert/pages/navBar.component.vue";
 export default {
   name: 'SideMenu',
-  components: {HomeContent},
+  components: {HomeContent, navBar},
 }
 </script>
 

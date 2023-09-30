@@ -5,7 +5,6 @@ export default {
 </script>
 
 <template>
-  <RouterView />
   <pv-toast></pv-toast>
   <header>
     <pv-toolbar class="bg-smoke header">
