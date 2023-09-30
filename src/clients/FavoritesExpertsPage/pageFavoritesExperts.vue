@@ -2,8 +2,8 @@
 
 import {defineComponent} from "vue";
 import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.component.vue";
-import GridPublishCardContent from "@/clients/FavoritesExpertsPage/gridPublishCard-content.component.vue";
-import PublishCardContent from "@/clients/FavoritesExpertsPage/publishCard-content.component.vue";
+import GridPublishCardContent from "@/clients/FavoritesExpertsPage/components/gridPublishCard-content.component.vue";
+import PublishCardContent from "@/clients/FavoritesExpertsPage/components/publishCard-content.component.vue";
 import ExpertCardContent from "@/clients/ExpertsAppointmentsScreen/components/expertCard-content.component.vue";
 
 export default defineComponent({
