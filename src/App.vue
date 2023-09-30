@@ -37,7 +37,7 @@ export default {
     getSource(){
       this.newsApi.getSources()
           .then(response =>{
-            this.user_info= response.data;
+            this.user_info= response.data.user_info;
             console.log(response.data);
           })
     }

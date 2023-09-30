@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const http = axios.create({
-    baseURL: 'http://localhost:3001/info',
+    baseURL: 'https://apimocha.com/fastservicesapi/posts',
 });
 
 export class UserApiService {
 
     getSources() {
-        return http.get(`http://localhost:3001/user_info/`);
+        return http.get(`https://apimocha.com/fastservicesapi/posts`);
     }
 }
