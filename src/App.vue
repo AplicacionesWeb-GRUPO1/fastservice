@@ -6,10 +6,18 @@ import PageShowAppointmentsContent from "@/clients/ExpertsAppointmentsScreen/pag
 import UsersProfileCardContent from "@/GeneralComponents/usersProfileCard-content.component.vue";
 import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.component.vue";
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
+import ExpertCardContent from "@/clients/ExpertsAppointmentsScreen/components/expertCard-content.component.vue";
+import CardData from "@/cards/CardsFavorite/cardData.vue";
+import CardRecord from "@/cards/CardsFavorite/cardRecord.vue";
+import CardComponent from "@/cards/CardsFavorite/cardComponent.vue";
 
 export default {
   name: "app",
   components: {
+    CardData,
+    CardRecord,
+    CardComponent,
+    ExpertCardContent,
     PageFavoritesExperts,
     GridProfilesContent,
     UsersProfileCardContent,
@@ -28,7 +36,7 @@ export default {
 
 <template>
 <home-component></home-component>
-  <page-favorites-experts></page-favorites-experts>
+  <card-component></card-component>
 </template>
 
 
