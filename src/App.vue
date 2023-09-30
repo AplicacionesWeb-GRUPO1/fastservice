@@ -37,6 +37,9 @@
         <router-link to="/experts/favorites" tag="li">
           <div class="menu-button"><i class="pi pi-cog"></i>Configuracion</div>
         </router-link>
+        <router-link to="/experts/favorites" tag="li">
+          <div class="menu-button"><i class="pi pi-sign-out"></i>LogOut</div>
+        </router-link>
       </ul>
     </div>
   </div>
