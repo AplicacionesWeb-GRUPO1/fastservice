@@ -1,6 +1,6 @@
 <script >
 import UsersProfileCardContent from "@/GeneralComponents/usersProfileCard-content.component.vue";
-import PublishCardContent from "@/clients/FavoritesExpertsPage/publishCard-content.component.vue";
+import PublishCardContent from "@/clients/FavoritesExpertsPage/components/publishCard-content.component.vue";
 
 export default {
   name: "gridPublishCard-content",
