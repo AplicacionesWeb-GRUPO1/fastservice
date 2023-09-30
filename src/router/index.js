@@ -23,42 +23,42 @@ import HomeContent from "@/expert/pages/home.content.component.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-      {
-          path: '/home',
-          name: '',
-          component: HomeContent,
-      },
-      {
-        path: '/',
-        name: 'home',
-        component: HomeContent,
-      },
     {
-        path: '/experts',
-        name: 'Experts',
-        component: GridProfilesContent,
+      path: '/home',
+      name: '',
+      component: HomeContent,
     },
     {
-        path: '/experts/profile',
-        name: 'ExpertProfile',
-        component: ClientProfilePage,
+      path: '/',
+      name: 'home',
+      redirect: 'home'
+    },
+    {
+      path: '/experts',
+      name: 'Experts',
+      component: GridProfilesContent,
+    },
+    {
+      path: '/experts/profile',
+      name: 'ExpertProfile',
+      component: ClientProfilePage,
     }
     ,
     {
-        path: '/experts/appointments',
-        name: 'ExpertAppointments',
-        component: PageShowAppointmentsContent,
+      path: '/experts/appointments',
+      name: 'ExpertAppointments',
+      component: PageShowAppointmentsContent,
     }
     ,
     {
-        path: '/experts/favorites',
-        name: 'ExpertFavorites',
-        component: PageFavoritesExperts,
+      path: '/experts/favorites',
+      name: 'ExpertFavorites',
+      component: PageFavoritesExperts,
     },
     {
-        path: '/clients/profile',
-        name: 'ClientProfile',
-        component: ClientProfilePage,
+      path: '/clients/profile',
+      name: 'ClientProfile',
+      component: ClientProfilePage,
     }
 
   ]
