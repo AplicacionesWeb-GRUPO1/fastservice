@@ -35,6 +35,7 @@ export default {
 .header {
   background-color: #f5f5f5;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.09);
+  font-family: 'Poppins', sans-serif;
 }
 
 .search-bar {

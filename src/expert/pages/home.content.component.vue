@@ -112,6 +112,7 @@
 <style scoped>
 .main-container {
   padding: 20px;
+  margin-left: 5px;
 }
 
 section {
