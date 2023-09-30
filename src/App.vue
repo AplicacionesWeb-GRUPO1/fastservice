@@ -4,13 +4,13 @@
       <div class="profile-section">
 
         <router-link to="/experts/profile">
-        <img src="https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png" alt="Profile Image" class="profile-image"/>
+          <img src="https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png" alt="Profile Image" class="profile-image"/>
         </router-link>
 
 
         <div class="profile-info">
-          <div class="profile-name">John Murphy</div>
-          <div class="profile-phone"><i class="pi pi-phone"></i>123-456-7890</div>
+          <div class="profile-name">{{ user_info.user.name }}</div>
+          <div class="profile-phone"><i class="pi pi-phone"></i>{{ user_info.user.number }}</div>
         </div>
       </div>
       <ul class="menu-list">
@@ -25,9 +25,11 @@
         <router-link to="/experts/profile" tag="li">
           <div class="menu-button"><i class="pi pi-upload"></i>Mis Publicaciones</div>
         </router-link>
+
         <router-link to="/experts/appointments" tag="li">
           <div class="menu-button"><i class="pi pi-wallet"></i>Mis Pagos</div>
         </router-link>
+
         <router-link to="/experts/favorites" tag="li">
           <div class="menu-button"><i class="pi pi-comments"></i>Chats</div>
         </router-link>
@@ -37,16 +39,16 @@
         <router-link to="/experts/favorites" tag="li">
           <div class="menu-button"><i class="pi pi-cog"></i>Configuracion</div>
         </router-link>
-        <router-link to="/experts/favorites" tag="li">
-          <div class="menu-button"><i class="pi pi-sign-out"></i>LogOut</div>
-        </router-link>
+
       </ul>
     </div>
   </div>
 
   <div class="content">
-    <nav-bar></nav-bar>
-    <router-view></router-view>
+    <nav-bar :name="user_info.user.name"
+    ></nav-bar>
+    <router-view
+    ></router-view>
   </div>
 
 </template>
@@ -54,10 +56,32 @@
 <script>
 import HomeContent from "@/expert/pages/home.content.component.vue";
 import navBar from "@/expert/pages/navBar.component.vue";
+import {UserApiService} from "@/services/user-api.service";
+import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
+import PageShowAppointmentsContent from "@/clients/ExpertsAppointmentsScreen/pageShowAppointments-conten.component.vue";
+import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.component.vue";
 export default {
-
   name: 'SideMenu',
-  components: {HomeContent, navBar},
+  components: {ClientProfilePage, PageShowAppointmentsContent, PageFavoritesExperts, HomeContent, navBar},
+  data() {
+    return {
+      user_info: [],
+      newsApi: new UserApiService()
+    }
+  },
+  created() {
+    this.getSource();
+  },
+  methods: {
+    getSource(){
+      this.newsApi.getSources()
+          .then(response =>{
+            this.user_info= response.data.user_info;
+            console.log(response.data);
+          })
+    }
+  },
+
 }
 </script>
 
@@ -132,7 +156,5 @@ export default {
 
 
 </style>
-
-
 
 
