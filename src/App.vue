@@ -7,6 +7,7 @@ import UsersProfileCardContent from "@/GeneralComponents/usersProfileCard-conten
 import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.component.vue";
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
 import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.component.vue";
+import {UserApiService} from "@/services/user-api.service";
 
 export default {
   name: "app",
@@ -24,20 +25,34 @@ export default {
     'home-content':HomeContent,
   },
   data() {
+    return {
+      user_info: [],
+      newsApi: new UserApiService()
+    }
+  },
+  created() {
+    this.getSource();
+  },
+  methods: {
+    getSource(){
+      this.newsApi.getSources()
+          .then(response =>{
+            this.user_info = response;
+            console.log(response.data);
+          })
+    }
   },
 };
 </script>
 
-<template>
-  <home-component></home-component>
 
+<template>
   <div class="sidebar">
     <side-menu></side-menu>
   </div>
   <div class="content">
-    <home-content></home-content>
+    <page-favorites-experts></page-favorites-experts>
   </div>
-
 </template>
 
 <style>
