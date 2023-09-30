@@ -55,6 +55,7 @@
 import HomeContent from "@/expert/pages/home.content.component.vue";
 import navBar from "@/expert/pages/navBar.component.vue";
 export default {
+
   name: 'SideMenu',
   components: {HomeContent, navBar},
 }
@@ -131,6 +132,7 @@ export default {
 
 
 </style>
+
 
 
 
