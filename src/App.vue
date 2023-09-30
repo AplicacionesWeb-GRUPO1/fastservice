@@ -7,6 +7,7 @@ import UsersProfileCardContent from "@/GeneralComponents/usersProfileCard-conten
 import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.component.vue";
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
 import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.component.vue";
+import navBarComponent from "@/expert/pages/navBar.component.vue";
 
 export default {
   name: "app",
@@ -19,9 +20,11 @@ export default {
     Home,
     SideMenu,
     HomeContent,
+    navBarComponent,
     'home-component': Home,
     'side-component': SideMenu,
     'home-content':HomeContent,
+    'nav-component': navBarComponent
   },
   data() {
   },
@@ -35,6 +38,7 @@ export default {
     <side-menu></side-menu>
   </div>
   <div class="content">
+    <nav-component></nav-component>
     <home-content></home-content>
   </div>
 
