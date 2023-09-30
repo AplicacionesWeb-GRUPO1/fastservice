@@ -35,7 +35,7 @@ export default {
     <side-menu></side-menu>
   </div>
   <div class="content">
-    <client-profile-page></client-profile-page>
+    <home-content></home-content>
   </div>
 
 </template>
