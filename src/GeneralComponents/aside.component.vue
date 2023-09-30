@@ -3,8 +3,8 @@
     <div class="profile-section">
       <img src="https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png" alt="Profile Image" class="profile-image"/>
       <div class="profile-info">
-        <div class="profile-name">John Murphy</div>
-        <div class="profile-phone"><i class="pi pi-phone"></i>123-456-7890</div>
+        <div class="profile-name">{{name}}</div>
+        <div class="profile-phone"><i class="pi pi-phone"></i>123</div>
       </div>
     </div>
     <ul class="menu-list">
@@ -21,8 +21,32 @@
 </template>
 
 <script>
+import {UserApiService} from "@/services/user-api.service";
+
 export default {
-  name: 'SideMenu'
+  name: 'SideMenu',
+  data() {
+    return {
+      user_info: [],
+      newsApi: new UserApiService(),
+      name: String,
+      cellphone: String
+    };
+  },
+  created() {
+    this.getSource();
+  },
+  methods: {
+    getSource() {
+      this.newsApi.getSources().then((response) => {
+        this.user_info = response.data.user_info;
+        console.log(response.data);
+        this.name= this.user_info.user.name;
+        this.cellphone= this.user_info.user.number;
+
+      });
+    },
+  },
 }
 </script>
 

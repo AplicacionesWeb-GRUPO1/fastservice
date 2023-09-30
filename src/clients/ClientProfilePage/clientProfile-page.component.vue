@@ -1,13 +1,11 @@
 <script>
 import ProfileImagesContent from "@/clients/ClientProfilePage/components/profileImages-content.component.vue";
 import PersonalInfoCardContent from "@/clients/ClientProfilePage/components/personalInfoCard-content.component.vue";
+import {UserApiService} from "@/services/user-api.service";
 
 export default {
   name: "clientProfile-page",
   components: {PersonalInfoCardContent, ProfileImagesContent},
-  props: {
-    user: Array
-  },
   data() {
     return {
       Tags: [
@@ -27,9 +25,24 @@ export default {
           user_tag: "description",
           name: "Description",
         },
-      ]
+      ],
+      user_info: [],
+      newsApi: new UserApiService(),
+      user:[],
     };
-  }
+  },
+  created() {
+    this.getSource();
+  },
+  methods: {
+    getSource() {
+      this.newsApi.getSources().then((response) => {
+        this.user_info = response.data.user_info;
+        console.log(response.data);
+        this.user = this.user_info.user;
+      });
+    },
+  },
 }
 </script>
 

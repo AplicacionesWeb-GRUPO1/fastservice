@@ -7,6 +7,6 @@ const http = axios.create({
 export class UserApiService {
 
     getSources() {
-        return http.get(`https://apimocha.com/fastservicesapi/posts`);
+        return http.get(`https://aplicacionesweb-grupo1.github.io/API-Fake/jsonserver/jsonserver/db.json`);
     }
 }
