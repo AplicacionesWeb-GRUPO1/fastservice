@@ -4,11 +4,11 @@
       <h2>Ver Trabajos</h2>
       <div class="image-list">
         <div class="scroll-container">
-          <img src="@/expert/img/expert%201.png" alt="Image 1" />
-          <img src="@/expert/img/expert%202.png" alt="Image 2" />
-          <img src="@/expert/img/expert%203.png" alt="Image 3" />
-          <img src="@/expert/img/expert%201.png" alt="Image 1" />
-          <img src="@/expert/img/expert%202.png" alt="Image 2" />
+          <img src="https://icons.veryicon.com/png/o/miscellaneous/refined-chamfer-icon/video-vertical.png" alt="Image 1" />
+          <img src="https://icons.veryicon.com/png/o/miscellaneous/refined-chamfer-icon/video-vertical.png" alt="Image 2" />
+          <img src="https://icons.veryicon.com/png/o/miscellaneous/refined-chamfer-icon/video-vertical.png" alt="Image 3" />
+          <img src="https://icons.veryicon.com/png/o/miscellaneous/refined-chamfer-icon/video-vertical.png" alt="Image 1" />
+          <img src="https://icons.veryicon.com/png/o/miscellaneous/refined-chamfer-icon/video-vertical.png" alt="Image 2" />
         </div>
       </div>
     </section>
@@ -16,9 +16,9 @@
     <section>
       <h2>Herramientas y Suministros</h2>
       <div class="tool-cards">
-          <Card class="tool">
-            <i class="pi pi-desktop"></i>
-          </Card>
+        <Card class="tool">
+          <i class="pi pi-desktop"></i>
+        </Card>
         <Card class="tool">
           <i class="pi pi-sun"></i>
         </Card>
@@ -43,10 +43,9 @@
     <section>
       <h2>Publicaciones de Clientes</h2>
       <div class="customer-cards">
-
         <Card class="customer-card">
           <div class="customer-image">
-            <img src="@/expert/img/cliente%201.png" alt="Customer 1" />
+            <img src="https://cdn-icons-png.flaticon.com/256/3135/3135789.png" alt="Customer 1" />
             <i class="pi pi-heart"></i>
             <i class="pi pi-star" style="color: yellow;"></i>
           </div>
@@ -58,7 +57,7 @@
 
         <Card class="customer-card">
           <div class="customer-image">
-            <img src="@/expert/img/cliente%202.png" alt="Customer 2" />
+            <img src="https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png" alt="Customer 2" />
             <i class="pi pi-heart"></i>
             <i class="pi pi-star" style="color: yellow;"></i>
           </div>
@@ -70,7 +69,7 @@
 
         <Card class="customer-card">
           <div class="customer-image">
-            <img src="@/expert/img/cliente%203.png" alt="Customer 3" />
+            <img src="https://cdn-icons-png.flaticon.com/256/3135/3135789.png" alt="Customer 3" />
             <i class="pi pi-heart"></i>
             <i class="pi pi-star" style="color: yellow;"></i>
           </div>
@@ -82,7 +81,7 @@
 
         <Card class="customer-card">
           <div class="customer-image">
-            <img src="@/expert/img/cliente%204.png" alt="Customer 4" />
+            <img src="https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png" alt="Customer 4" />
             <i class="pi pi-heart"></i>
             <i class="pi pi-star" style="color: yellow;"></i>
           </div>
@@ -94,7 +93,7 @@
 
         <Card class="customer-card">
           <div class="customer-image">
-            <img src="@/expert/img/cliente%205.png" alt="Customer 5" />
+            <img src="https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png" alt="Customer 5" />
             <i class="pi pi-heart"></i>
             <i class="pi pi-star" style="color: yellow;"></i>
           </div>
@@ -113,7 +112,6 @@
 <style scoped>
 .main-container {
   padding: 20px;
-  margin-left: 260px;
 }
 
 section {
@@ -168,12 +166,6 @@ img {
   justify-content: center;
 }
 
-
-.customer-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
 
 .customer-cards {
   display: flex;

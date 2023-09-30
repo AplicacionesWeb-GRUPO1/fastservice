@@ -1,7 +1,7 @@
 <template>
   <div class="side-menu">
     <div class="profile-section">
-      <img src="@/expert/img/profile-pic.png" alt="Profile Image" class="profile-image"/>
+      <img src="https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png" alt="Profile Image" class="profile-image"/>
       <div class="profile-info">
         <div class="profile-name">John Murphy</div>
         <div class="profile-phone"><i class="pi pi-phone"></i>123-456-7890</div>
