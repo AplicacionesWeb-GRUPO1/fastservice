@@ -1,6 +1,5 @@
 <script>
 
-
 import AppointmentButtonContent
   from "@/clients/ExpertsAppointmentsScreen/components/appointmentButton-content.component.vue";
 
