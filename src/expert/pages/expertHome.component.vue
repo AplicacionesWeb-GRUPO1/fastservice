@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "app",
+  name: "nav",
   data() {
     return {
       drawer: false,

@@ -1,3 +1,13 @@
+<template>
+  <div class="sidebar">
+    <side-menu></side-menu>
+  </div>
+  <div class="content">
+    <client-profile-page :user="user_info.user"></client-profile-page>
+  </div>
+</template>
+
+
 <script>
 import Home from "@/views/HomeView.vue";
 import SideMenu from "@/expert/pages/aside.component.vue"
@@ -46,16 +56,60 @@ export default {
 </script>
 
 
-<template>
-  <div class="sidebar">
-    <side-menu></side-menu>
-  </div>
-  <div class="content">
-  <client-profile-page :user="user_info.user"></client-profile-page>
-  </div>
-</template>
-
 <style>
+.side-menu {
+  width: 250px;
+  background: linear-gradient(to right, #9b59b6,#3498db);
+  color: #fff;
+  padding: 20px;
+  height: 100%;
+  position: fixed;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name {
+  font-weight: bold;
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+
+.menu-list {
+  list-style-type: none;
+  padding: 10px;
+}
+
+.menu-list li {
+  margin: 10px 0;
+  cursor: pointer;
+  transition: color 0.5s;
+}
+
+.menu-list li i {
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.menu-list li:hover {
+  color: #000000;
+}
+
 .sidebar {
   position: fixed;
   width: 200px;
@@ -69,13 +123,6 @@ export default {
   width: auto;
   position: relative;
   z-index: 1;
-}
-
-.info {
-  width: 1440px;
-  height: 300px;
-  position: relative;
-  background: #f55;
 }
 
 </style>
