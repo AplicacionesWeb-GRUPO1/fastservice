@@ -37,7 +37,7 @@ export default {
     getSource(){
       this.newsApi.getSources()
           .then(response =>{
-            this.user_info = response;
+            this.user_info= response.data;
             console.log(response.data);
           })
     }
@@ -51,7 +51,7 @@ export default {
     <side-menu></side-menu>
   </div>
   <div class="content">
-    <page-favorites-experts></page-favorites-experts>
+  <client-profile-page :user="user_info.user"></client-profile-page>
   </div>
 </template>
 

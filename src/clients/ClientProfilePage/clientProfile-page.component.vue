@@ -5,24 +5,27 @@ import PersonalInfoCardContent from "@/clients/ClientProfilePage/components/pers
 export default {
   name: "clientProfile-page",
   components: {PersonalInfoCardContent, ProfileImagesContent},
+  props: {
+    user: Array
+  },
   data() {
     return {
-      users: [
+      Tags: [
         {
-          name: "Perez",
-          tagName: "Nombre", // Pasa el valor tagName al componente hijo
+          user_tag: "name",
+          name: "nombre",
         },
         {
-          name: "+8801800000000",
-          tagName: "Contact Number", // Pasa el valor tagName al componente hijo
+          user_tag: "number",
+          name: "Contact Number",
         },
         {
-          name: "DD MM YYYY",
-          tagName: "Date of birth", // Pasa el valor tagName al componente hijo
+          user_tag: "birthday",
+          name: "Date of birth",
         },
         {
-          name: ".........",
-          tagName: "Descripcion", // Pasa el valor tagName al componente hijo
+          user_tag: "description",
+          name: "Description",
         },
       ]
     };
@@ -32,9 +35,13 @@ export default {
 
 <template>
   <div class="p-3">
-    <profile-images-content  :name="users[0].name"/>
-     <div v-for="user in users" :key="user.name">
-        <personal-info-card-content :name="user.name" :tagName="user.tagName" />
+
+    <profile-images-content  :name="user.name"/>
+     <div v-for="tag in Tags" :key="tag.name">
+        <personal-info-card-content
+            :name="user[`${tag.user_tag}`]"
+            :tagName="tag.name"
+        />
      </div>
   </div>
 </template>
