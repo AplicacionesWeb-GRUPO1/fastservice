@@ -6,6 +6,7 @@ import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.compon
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
 import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.component.vue";
 import HomeContent from "@/expert/pages/home.content.component.vue";
+import herramientasPage from "@/expert/pages/herramientas.page.vue";
 
 
 
@@ -59,7 +60,13 @@ const router = createRouter({
       path: '/clients/profile',
       name: 'ClientProfile',
       component: ClientProfilePage,
-    }
+    },
+    ,
+    {
+        path: '/experts/herramientas',
+        name: 'ClientAppointments',
+        component: herramientasPage,
+    },
 
   ]
 })
