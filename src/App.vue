@@ -33,7 +33,7 @@
         <router-link to="/experts/favorites" tag="li">
           <div class="menu-button"><i class="pi pi-comments"></i>Chats</div>
         </router-link>
-        <router-link to="/experts/favorites" tag="li">
+        <router-link to="/experts/herramientas" tag="li">
           <div class="menu-button"><i class="pi pi-wrench"></i>Herramientas</div>
         </router-link>
         <router-link to="/experts/favorites" tag="li">
