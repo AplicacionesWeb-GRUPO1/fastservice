@@ -6,6 +6,7 @@ import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.compon
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
 import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.component.vue";
 import HomeContent from "@/expert/pages/home.content.component.vue";
+import Login from "@/loginPage/Login.vue";
 
 
 
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       redirect: 'home'
+    },
+    {
+      path: '/login',
+      name: '',
+      component: Login,
     },
     {
       path: '/experts',
