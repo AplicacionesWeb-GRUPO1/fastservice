@@ -38,7 +38,7 @@
   </script>
 
   <template>
-    <div class="sidebar" >
+    <div>
         <div class="side-menu" :style="{ background: roles['Expert'].backgroundColor }">
         <div class="profile-section">
 
@@ -46,16 +46,18 @@
             <img src="https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png" alt="Profile Image" class="profile-image"/>
           </a>
 
-          <div class="profile-info ">
+          <div class="profile-info font-bold ">
             <div class="p rofile-name flex align-content-center">{{user.name}}</div>
           </div>
 
         </div>
 
-        <ul class="p-0 " v-for="(option, index) in roles['Expert'].options" :key="option.name">
-          <li class="nav-item flex justify-items-start ">
-            <i :class="option.icon"></i>
-            <a :href="option.link" class="nav-link ">{{ option.name }}</a>
+        <ul class="p-0" v-for="(option, index) in roles['Client'].options" :key="option.name">
+          <li class=" ">
+            <router-link :to="option.link" class="flex justify-start align-items-start space-x-7 font-bold w-full">
+              <i :class="option.icon" class="pt-0.5 side-icon font-black "></i>
+              <p>{{ option.name }}</p>
+            </router-link>
           </li>
 
         </ul>
@@ -68,17 +70,11 @@
   li{
     margin-bottom:20px;
   }
-  .nav-item a{
-    font-size: 1.7rem;
-    display:flex;
-    align-items: center;
+
+  .side-icon{
+    font-size:1em;
   }
-  .nav-item i{
-    font-size: 2rem;
-    display:flex;
-    align-items: start;
-    width: 20%;
-  }
+
   .side-menu {
     width: 250px;
     padding: 20px;
@@ -100,20 +96,5 @@
   }
 
 
-  .profile-name {
-    font-weight: bold;
-    font-size: 2rem;
-    padding-bottom: 5px;
-  }
-
-  .menu-list {
-    list-style-type: none;
-    padding: 10px;
-  }
-  .sidebar {
-    position: fixed;
-    width: 200px;
-    color: black;
-  }
 
   </style>

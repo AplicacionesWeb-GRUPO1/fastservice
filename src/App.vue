@@ -1,6 +1,6 @@
 <template>
   <side-bar-content :user="user_info.user"></side-bar-content>
-  <div class="content">
+  <div class="content ">
     <nav-bar :name="user_info.user.name"
     ></nav-bar>
     <router-view
