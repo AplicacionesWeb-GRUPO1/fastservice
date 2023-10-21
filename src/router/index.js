@@ -32,7 +32,7 @@ const router = createRouter({
       component: GridProfilesContent,
     },
     {
-      path: '/experts/profile',
+      path: '/profile',
       name: 'ExpertProfile',
       component: ClientProfilePage,
     }
