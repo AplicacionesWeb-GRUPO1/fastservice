@@ -25,18 +25,18 @@ export default {
 </script>
 
 <template>
-  <div class="p-card ">
-    <div class="p-card-body p-0 space-y-2">
-      <div class="flex justify-between items-center">
-        <div class="card-title">{{ tagName }}</div>
+  <div class="p-card h-13">
+    <div class="p-card-body p-0 m-0 border-0">
+      <div class="flex justify-between">
+        <div class="card-title ">{{ tagName }}</div>
         <button>
-          <i class="pi pi-pencil" @click="toggleEditMode"></i>
+          <i class="pi pi-pencil " @click="toggleEditMode"></i>
         </button>
       </div>
       <div v-if="editMode" class="edit-name">
-        <input  class="text-[#677294]" v-model="editedName" placeholder="Nuevo Nombre" @blur="saveName" @keyup.enter="saveName" />
+        <input  class="text-[#677294] " v-model="editedName" placeholder="Nuevo Nombre" @blur="saveName" @keyup.enter="saveName" />
       </div>
-      <div v-else class="text-[#677294]">
+      <div v-else class="text-[#677294] edit-name">
         {{ name }}
       </div>
     </div>
@@ -49,14 +49,12 @@ export default {
   color: #0EBE7F;
   font-size:12px;
 }
-
-.edit-name {
-  margin-top: 10px;
-}
-
-input {
+.edit-name{
   width: 100%;
-  border: none;
-  border-bottom: 1px solid #ccc;
+  display:flex;
+  justify-content: start;
+  font-size: 16px;
 }
+
+
 </style>

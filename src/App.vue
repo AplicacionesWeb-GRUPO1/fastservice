@@ -1,12 +1,11 @@
 <template>
-  <side-bar-content :user="user_info.user"></side-bar-content>
-  <div class="content ">
-    <nav-bar :name="user_info.user.name"
-    ></nav-bar>
-    <router-view
-    ></router-view>
+  <div>
+    <side-bar-content :user="user_info.user2" v-if="user_info.user2"></side-bar-content>
+    <div class="content" v-if="user_info.user2">
+      <nav-bar :name="user_info.user2.name"></nav-bar>
+      <router-view></router-view>
+    </div>
   </div>
-
 </template>
 
 <script>
@@ -34,7 +33,7 @@ export default {
       this.newsApi.getSources()
           .then(response =>{
             this.user_info= response.data.user_info;
-            console.log(response.data);
+            console.log(response.data.user_info.user1);
           })
     }
   },
@@ -43,20 +42,6 @@ export default {
 </script>
 
 <style scoped>
-.menu-list li {
-  margin: 10px 0;
-  cursor: pointer;
-  transition: color 0.5s;
-}
-
-.menu-list li i {
-  margin-right: 10px;
-  margin-bottom: 20px;
-}
-
-.menu-list li:hover {
-  color: #000000;
-}
 
 
 .content {
