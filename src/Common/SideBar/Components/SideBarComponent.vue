@@ -39,11 +39,11 @@
 
   <template>
     <div>
-        <div class="side-menu" :style="{ background: roles['Expert'].backgroundColor }">
+        <div class="side-menu" :style="{ background: roles[user.role].backgroundColor }">
         <div class="profile-section">
 
           <a href="/profile">
-            <img src="https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png" alt="Profile Image" class="profile-image"/>
+            <img :src="user.profile_img" alt="Profile Image" class="profile-image"/>
           </a>
 
           <div class="profile-info font-bold ">
@@ -52,7 +52,7 @@
 
         </div>
 
-        <ul class="p-0" v-for="(option, index) in roles['Client'].options" :key="option.name">
+        <ul class="p-0" v-for="(option, index) in roles[user.role].options" :key="option.name">
           <li class=" ">
             <router-link :to="option.link" class="flex justify-start align-items-start space-x-7 font-bold w-full">
               <i :class="option.icon" class="pt-0.5 side-icon font-black "></i>
@@ -94,7 +94,6 @@
     border-radius: 50%;
     margin-right: 10px;
   }
-
 
 
   </style>
