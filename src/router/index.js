@@ -5,8 +5,11 @@ import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.compon
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
 import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.component.vue";
 import HomeContent from "@/expert/pages/home.content.component.vue";
-import Login from "@/loginPage/Login.vue";
+import NotificationsPage from "@/clients/NotificationsPage/notifications.vue";
 
+/*
+import Login from "@/loginPage/Login.vue";
+*/
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,11 +24,7 @@ const router = createRouter({
       name: 'home',
       redirect: 'home'
     },
-    {
-      path: '/login',
-      name: '',
-      component: Login,
-    },
+
     {
       path: '/experts',
       name: 'Experts',
@@ -52,8 +51,12 @@ const router = createRouter({
       path: '/clients/profile',
       name: 'ClientProfile',
       component: ClientProfilePage,
-    }
-
+    },
+    {
+      path: '/clients/notifications',
+      name: 'Notifications',
+      component: NotificationsPage,
+    },
   ]
 })
 
