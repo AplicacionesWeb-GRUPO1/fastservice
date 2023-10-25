@@ -1,8 +1,8 @@
 <template>
   <div>
-    <side-bar-content :user="user_info.user2" v-if="user_info.user2"></side-bar-content>
-    <div class="content" v-if="user_info.user2">
-      <nav-bar :name="user_info.user2.name"></nav-bar>
+    <side-bar-content :user="user" v-if="user"></side-bar-content>
+    <div class="content" v-if="user">
+      <nav-bar :name="user.name"></nav-bar>
       <router-view></router-view>
     </div>
   </div>
@@ -22,6 +22,7 @@ export default {
   data() {
     return {
       user_info: [],
+      user: [],
       newsApi: new UserApiService()
     }
   },
@@ -33,7 +34,7 @@ export default {
       this.newsApi.getSources()
           .then(response =>{
             this.user_info= response.data.user_info;
-            console.log(response.data.user_info.user1);
+            this.user= response.data.user_info.user_client;
           })
     }
   },
