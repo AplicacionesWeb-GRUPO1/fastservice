@@ -7,6 +7,7 @@ import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.co
 import HomeContent from "@/expert/pages/home.content.component.vue";
 import PageServicesPayment from "@/clients/ServicesPaymentPage/pageServicesPayment.vue";
 import NotificationsPage from "@/clients/NotificationsPage/notifications.vue";
+import HiredServices from "@/clients/HiredServices/hiredServices.vue";
 
 /*
 import Login from "@/loginPage/Login.vue";
@@ -62,6 +63,11 @@ const router = createRouter({
       path: '/clients/notifications',
       name: 'Notifications',
       component: NotificationsPage,
+    },
+    {
+      path: '/clients/services',
+      name: 'Services',
+      component: HiredServices,
     },
   ]
 })
