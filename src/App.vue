@@ -9,13 +9,14 @@
 </template>
 
 <script>
-import HomeContent from "@/expert/pages/home.content.component.vue";
+import HomeContent from "@/clients/ClientHomePage/home.content.component.vue";
 import navBar from "@/expert/pages/navBar.component.vue";
 import {UserApiService} from "@/services/user-api.service";
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
 import PageShowAppointmentsContent from "@/clients/ExpertsAppointmentsScreen/pageShowAppointments-conten.component.vue";
 import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.component.vue";
 import SideBarContent from "@/Common/SideBar/Components/SideBarComponent.vue";
+
 export default {
   name: 'SideMenu',
   components: {SideBarContent, ClientProfilePage, PageShowAppointmentsContent, PageFavoritesExperts, HomeContent, navBar},
