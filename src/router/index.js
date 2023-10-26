@@ -8,7 +8,7 @@ import HomeContent from "@/clients/ClientHomePage/home.content.component.vue";
 import PageServicesPayment from "@/clients/ServicesPaymentPage/pageServicesPayment.vue";
 import NotificationsPage from "@/clients/NotificationsPage/notifications.vue";
 import HiredServices from "@/clients/HiredServices/hiredServices.vue";
-
+import Publications from "@/clients/ClientPublications/publicationPosts.vue";
 
 /*
 import Login from "@/loginPage/Login.vue";
@@ -70,6 +70,11 @@ const router = createRouter({
       name: 'Services',
       component: HiredServices,
     },
+    {
+      path: '/publications',
+      name: 'Publications',
+      component: Publications,
+    }
   ]
 })
 
