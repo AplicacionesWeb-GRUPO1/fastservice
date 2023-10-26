@@ -4,10 +4,11 @@ import PageShowAppointmentsContent from "@/clients/ExpertsAppointmentsScreen/pag
 import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.component.vue";
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
 import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.component.vue";
-import HomeContent from "@/expert/pages/home.content.component.vue";
+import HomeContent from "@/clients/ClientHomePage/home.content.component.vue";
 import PageServicesPayment from "@/clients/ServicesPaymentPage/pageServicesPayment.vue";
 import NotificationsPage from "@/clients/NotificationsPage/notifications.vue";
 import HiredServices from "@/clients/HiredServices/hiredServices.vue";
+
 
 /*
 import Login from "@/loginPage/Login.vue";
