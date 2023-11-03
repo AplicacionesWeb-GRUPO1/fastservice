@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
 import PageShowAppointmentsContent from "@/clients/ExpertsAppointmentsScreen/pageShowAppointments-conten.component.vue";
 import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.component.vue";
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
@@ -10,9 +9,10 @@ import NotificationsPage from "@/clients/NotificationsPage/notifications.vue";
 import HiredServices from "@/clients/HiredServices/hiredServices.vue";
 import Publications from "@/clients/ClientPublications/publicationPosts.vue";
 
-/*
+
 import Login from "@/loginPage/Login.vue";
-*/
+
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -64,6 +64,11 @@ const router = createRouter({
       path: '/clients/notifications',
       name: 'Notifications',
       component: NotificationsPage,
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login,
     },
     {
       path: '/clients/services',

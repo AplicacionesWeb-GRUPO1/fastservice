@@ -61,17 +61,6 @@ body {
   background-size: cover;
 }
 
-#app::before {
-  content: '';
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: linear-gradient(250deg, #0820fb, #EBE3CC, #fb0808);
-  opacity: 0.5;
-  z-index: -1;
-}
 
 .login-container {
   display: flex;

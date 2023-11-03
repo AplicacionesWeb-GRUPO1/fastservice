@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       user_info: [],
-      user: [],
+      user:[],
       newsApi: new UserApiService()
     }
   },
