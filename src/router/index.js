@@ -1,12 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
 import PageShowAppointmentsContent from "@/clients/ExpertsAppointmentsScreen/pageShowAppointments-conten.component.vue";
 import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.component.vue";
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
 import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.component.vue";
-import HomeContent from "@/expert/pages/home.content.component.vue";
+import HomeContent from "@/clients/ClientHomePage/home.content.component.vue";
 import PageServicesPayment from "@/clients/ServicesPaymentPage/pageServicesPayment.vue";
 import NotificationsPage from "@/clients/NotificationsPage/notifications.vue";
+import HiredServices from "@/clients/HiredServices/hiredServices.vue";
+import Publications from "@/clients/ClientPublications/publicationPosts.vue";
+
+
 import Login from "@/loginPage/Login.vue";
 
 
@@ -63,15 +66,20 @@ const router = createRouter({
       component: NotificationsPage,
     },
     {
-      path: '/clients/notifications',
-      name: 'Notifications',
-      component: NotificationsPage,
-    },
-    {
       path: '/login',
-      name: 'Notifications',
+      name: 'Login',
       component: Login,
     },
+    {
+      path: '/clients/services',
+      name: 'Services',
+      component: HiredServices,
+    },
+    {
+      path: '/publications',
+      name: 'Publications',
+      component: Publications,
+    }
   ]
 })
 
