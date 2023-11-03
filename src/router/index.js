@@ -7,10 +7,9 @@ import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.co
 import HomeContent from "@/expert/pages/home.content.component.vue";
 import PageServicesPayment from "@/clients/ServicesPaymentPage/pageServicesPayment.vue";
 import NotificationsPage from "@/clients/NotificationsPage/notifications.vue";
-
-/*
 import Login from "@/loginPage/Login.vue";
-*/
+
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -62,6 +61,16 @@ const router = createRouter({
       path: '/clients/notifications',
       name: 'Notifications',
       component: NotificationsPage,
+    },
+    {
+      path: '/clients/notifications',
+      name: 'Notifications',
+      component: NotificationsPage,
+    },
+    {
+      path: '/login',
+      name: 'Notifications',
+      component: Login,
     },
   ]
 })
