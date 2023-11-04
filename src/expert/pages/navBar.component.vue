@@ -18,7 +18,7 @@ export default {
       <template #center>
         <div class="search-bar">
           <i class="pi pi-search search-icon" />
-          <pv-input-text v-model="value1" placeholder="Search" class="search-input" />
+          <pv-input-text placeholder="Search" class="search-input" />
         </div>
       </template>
       <template #end>

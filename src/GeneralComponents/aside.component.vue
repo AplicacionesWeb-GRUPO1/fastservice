@@ -40,7 +40,6 @@
       getSource() {
         this.newsApi.getSources().then((response) => {
           this.user_info = response.data.user_info;
-          console.log(response.data);
           this.name= this.user_info.user.name;
           this.cellphone= this.user_info.user.number;
 

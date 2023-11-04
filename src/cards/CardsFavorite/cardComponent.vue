@@ -2,13 +2,14 @@
   import {defineComponent} from "vue";
   import cardData from "@/cards/CardsFavorite/cardData.vue";
   import cardRecord from "@/cards/CardsFavorite/cardRecord.vue";
+  import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.component.vue";
   //import ExpertCardContent from "@/clients/ExpertsAppointmentsScreen/components/expertCard-content.component.vue";
   //import GridPublishCardContent from "@/clients/FavoritesExpertsPage/gridPublishCard-content.component.vue";
  // import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.component.vue";
 
   export default defineComponent({
     name: "cardComponent",
-    components: { cardData, cardRecord}
+    components: {GridProfilesContent, cardData, cardRecord}
   })
 </script>
 
