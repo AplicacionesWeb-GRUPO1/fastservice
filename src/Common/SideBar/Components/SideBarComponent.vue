@@ -2,12 +2,12 @@
   export default {
     name: 'SideBar-content',
     props: {
-      user: []
+      user: {}
     },
     data() {
       return{
         roles:{
-          Client:{
+          cliente:{
             backgroundColor: 'linear-gradient(to right, #3294EF, #07D9AD)',
             options: [
               { name: 'Home', icon: 'pi pi-home', link: '/home' },
@@ -15,19 +15,19 @@
               { name: 'Publications', icon: 'pi pi-send', link: '/publications' },
               { name: 'Contracted Services', icon: 'pi pi-wrench', link: '/clients/services' },
               { name: 'Notifications', icon: 'pi pi-bell', link: '/clients/notifications' },
-              { name: 'Payments', icon: 'pi pi-credit-card', link: '/payments' },
+              { name: 'Payments', icon: 'pi pi-credit-card', link: '/servicespayment' },
               { name: 'Log Out', icon: 'pi pi-sign-out', link: '/login' },
             ],
           },
 
-          Expert:{
+          experto:{
             backgroundColor: 'linear-gradient(to right, #EF3232, #90A2FF)',
             options: [
               { name: 'Home', icon: 'pi pi-home', link: '/home' },
               { name: 'Profile', icon: 'pi pi-user', link: '/profile' },
               { name: 'Works', icon: 'pi pi-briefcase', link: '/publications' },
               { name: 'Notifications', icon: 'pi pi-bell', link: '/notifications' },
-              { name: 'Payments', icon: 'pi pi-credit-card', link: '/payments' },
+              { name: 'Payments', icon: 'pi pi-credit-card', link: '/servicespayment' },
               { name: 'Log Out', icon: 'pi pi-sign-out', link: '/login' },
             ],
           }
@@ -43,7 +43,7 @@
         <div class="profile-section">
 
           <a href="/profile">
-            <img :src="user.profile_img" alt="Profile Image" class="profile-image"/>
+            <img :src="user.avatar" alt="Profile Image" class="profile-image"/>
           </a>
 
           <div class="profile-info font-bold ">

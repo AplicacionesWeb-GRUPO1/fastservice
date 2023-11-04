@@ -1,12 +1,13 @@
 <script >
 import {UserApiService} from "@/services/user-api.service";
+import {ExpertApiService} from "@/services/expert-api.service";
 
 export default {
   name: "ServicesPayment-page",
   data() {
     return {
       expert: [],
-      newsApi: new UserApiService(),
+      newsApi: new ExpertApiService(),
       efectivo: true
 
     }
@@ -16,8 +17,8 @@ export default {
   },
   methods: {
     getSource() {
-      this.newsApi.getSources().then((response) => {
-        this.expert = response.data.user_info.publications[0];
+      this.newsApi.getExperts().then((response) => {
+        this.expert = response.data[0];
         console.log(response.data);
       });
     },
@@ -32,7 +33,7 @@ export default {
 </script>
 
 <template>
-  <section class="flex  justify-center items-center pt-10">
+  <section class="flex  justify-center items-center pt-20">
       <pv-card class="paymentSection" style="
                width: 48em; position:relative; border-radius: 20px;">
         <template #title>
@@ -40,7 +41,7 @@ export default {
             <div class="avatar_img">
               <div class="cellPhone-number flex space-x-2">
                 <i class="w-1/12 pi pi-phone pt-1"  style="color: black; font-size: 1rem"></i>
-                <h3 class="flex justify-center">+51 922 221 323</h3>
+                <h3 class="flex justify-center">+51 {{expert.phone}}</h3>
               </div>
               <img :src="expert.avatar" style="width: 170px; height: 170px; border-radius: 100%;" />
 

@@ -1,30 +1,32 @@
 <template>
-  <div>
-    <side-bar-content :user="user" v-if="user"></side-bar-content>
-    <div class="content" v-if="user">
-      <nav-bar :name="user.name"></nav-bar>
-      <router-view></router-view>
+    <div>
+      <side-bar-content :user="user" v-if="user"/>
+      <div class="content" v-if="user">
+        <nav-bar :name="user.name"></nav-bar>
+        <router-view></router-view>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
 import HomeContent from "@/clients/ClientHomePage/home.content.component.vue";
 import navBar from "@/expert/pages/navBar.component.vue";
-import {UserApiService} from "@/services/user-api.service";
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
 import PageShowAppointmentsContent from "@/clients/ExpertsAppointmentsScreen/pageShowAppointments-conten.component.vue";
 import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.component.vue";
 import SideBarContent from "@/Common/SideBar/Components/SideBarComponent.vue";
+import {ClientApiService} from "@/services/client-api.service";
+import {ExpertApiService} from "@/services/expert-api.service";
 
 export default {
   name: 'SideMenu',
   components: {SideBarContent, ClientProfilePage, PageShowAppointmentsContent, PageFavoritesExperts, HomeContent, navBar},
   data() {
     return {
-      user_info: [],
-      user:[],
-      newsApi: new UserApiService()
+      users: [],
+      user: null,
+      clientsApi: new ClientApiService(),
+      expertsApi: new ExpertApiService()
     }
   },
   created() {
@@ -32,12 +34,21 @@ export default {
   },
   methods: {
     getSource(){
-      this.newsApi.getSources()
+      this.clientsApi.getUsers()
           .then(response =>{
-            this.user_info= response.data.user_info;
-            this.user= response.data.user_info.user_client;
+            this.users = response.data; // Asignar la lista completa de usuarios
+            this.user = this.users[0]; // Asignar el primer usuario por defecto
           })
     }
+
+  //  getSource(){
+  //    this.expertsApi.getExperts()
+  //        .then(response =>{
+  //          this.users = response.data; // Asignar la lista completa de usuarios
+  //          this.user = this.users[0]; // Asignar el primer usuario por defecto
+  //        })
+  //  }
+
   },
 
 }
