@@ -38,6 +38,7 @@ export default {
           .then(response =>{
             this.users = response.data; // Asignar la lista completa de usuarios
             this.user = this.users[0]; // Asignar el primer usuario por defecto
+            console.log("user", this.user);
           })
     }
 
