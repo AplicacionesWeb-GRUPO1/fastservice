@@ -7,7 +7,7 @@
     data() {
       return{
         roles:{
-          Client:{
+          client:{
             backgroundColor: 'linear-gradient(to right, #3294EF, #07D9AD)',
             options: [
               { name: 'Home', icon: 'pi pi-home', link: '/home' },
@@ -19,7 +19,6 @@
               { name: 'Log Out', icon: 'pi pi-sign-out', link: '/login' },
             ],
           },
-
           experto:{
             backgroundColor: 'linear-gradient(to right, #EF3232, #90A2FF)',
             options: [
@@ -32,6 +31,15 @@
             ],
           }
         }
+      }
+    },
+    methods: {
+      logout() {
+        // Limpiar datos y cerrar sesión
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        this.$root.$data.onlogged = false;
+        window.location.reload();
       }
     }
   }
@@ -53,13 +61,18 @@
         </div>
 
         <ul class="p-0" v-for="(option, index) in roles[user.role].options" :key="option.name">
-          <li class=" ">
+          <li v-if="option.name !== 'Log Out'" class="">
             <router-link :to="option.link" class="flex justify-start align-items-start space-x-7 font-bold w-full">
               <i :class="option.icon" class="pt-0.5 side-icon font-black "></i>
               <p>{{ option.name }}</p>
             </router-link>
           </li>
-
+          <li v-else >
+            <router-link @click="logout" :to="option.link" class="flex justify-start align-items-start space-x-7 font-bold w-full">
+              <i :class="option.icon" class="pt-0.5 side-icon font-black "></i>
+              <p>{{ option.name }}</p>
+            </router-link>
+          </li>
         </ul>
       </div>
     </div>

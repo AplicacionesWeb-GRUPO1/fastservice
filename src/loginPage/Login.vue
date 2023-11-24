@@ -46,39 +46,47 @@ export default {
   },
   methods: {
     login() {
-      console.log("Credentials: ", this.username, this.password);
       const credentials = {username: this.username, password: this.password};
+
       this.authService.getToken(credentials)
           .then(response => {
-            const { token, ...userData } = response.data;
-            console.log("token", token);
-            console.log("userData", userData);
-            localStorage.setItem("token", token);
-            this.$root.$data.onlogged = true; // Modificar el estado de onlogged
+
+            const { token, ...userData }= response.data;
+
+            this.saveToken(token);
+            this.saveUser(userData.role, userData.userName);
+            this.$root.$data.onlogged = true;
             this.$router.push('/home');
           })
           .catch(error => {
             console.log(error);
           });
     },
+    saveToken(token){
 
-  },
-  saveToken(token){
-    localStorage.setItem("token", token);
-    const baseService = new BaseService();
-    baseService.setAuthorizationHeader(token);
-  },
-  saveUser(rol, username){
-    let service;
+      localStorage.setItem("token", token);
+      const baseService = new BaseService();
+      baseService.setAuthorizationHeader(token);
 
-    if(rol === "expert"){
-      service = new ExpertApiService();
-    }else if(rol ==="client"){
-      service = new ClientApiService();
+    },
+    saveUser(rol, username){
+
+      let service;
+      if(rol === "expert"){
+        service = new ExpertApiService();
+      }else if(rol ==="client"){
+        service = new ClientApiService();
+      }
+      rol= rol+"s";
+      service.getUsersByUsername(rol, username)
+          .then(response =>{
+            this.user= response;
+            this.$root.$data.loggedUser = this.user;
+            localStorage.setItem("user", JSON.stringify(this.user));
+          })
     }
 
-    this.$router.push('/home');
-  }
+  },
 };
 </script>
 

@@ -6,7 +6,7 @@
           <div class="large-content">
             <InputText v-model="name" placeholder="Nombre" class="large-input" />
             <InputText v-model="lastName" placeholder="Apellido" class="large-input" />
-            <InputText v-model="username" placeholder="Nombre de usuario" class="large-input" />
+            <InputText v-model="userName" placeholder="Nombre de usuario" class="large-input" />
             <InputPasswordText v-model="password" placeholder="Contraseña" class="large-input" />
             <InputText v-model="phone" placeholder="Teléfono" class="large-input" />
             <div class="button-action">
@@ -51,7 +51,7 @@ export default {
     return {
       name: "",
       lastName: "",
-      username: "",
+      userName: "",
       password: "",
       phone: "",
       birthdayDate: null,
@@ -62,37 +62,47 @@ export default {
   },
   methods: {
     register() {
+
       if (!this.isRegistering) {
         // Agregar el prefijo "+51" al número de teléfono
         const formattedPhone = "+51" + this.phone;
+        const formattedBirthdayDate = this.formatDate(this.birthdayDate);
 
         const signUpData = new SignUpData(
             this.name,
             this.lastName,
-            this.username,
+            this.userName,
             this.password,
             formattedPhone, // Usar el número formateado
-            this.birthdayDate,
+            formattedBirthdayDate,
             this.role
         );
-
-        console.log("datos de registro: ", signUpData);
         this.post(signUpData);
         this.isRegistering = true;
         this.$router.push('/login');
       }
     },
+    post(signUpData){
 
-    post(signUpData) {
-      console.log("Llamada a post");
       this.authService.createUser(signUpData)
           .then(response => {
+            console.log("datos de registro: ", signUpData);
             console.log(response);
           })
           .catch(error => {
             console.log(error);
-          });
-    }
+          })
+    },
+    formatDate(date) {
+      if (!date) return null;
+
+      const d = new Date(date);
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+
+      return `${day}/${month}/${year}`; // Formato DD/MM/AAAA
+    },
   },
 };
 </script>
