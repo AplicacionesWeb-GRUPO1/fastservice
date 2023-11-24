@@ -55,12 +55,7 @@ export default {
   },
   methods: {
     getSource() {
-      this.newsApi.getUsers().then((response) => {
-        this.user = response.data[0];
-        this.publications = response.data.user_info.publications;
-        console.log(response.data);
-
-      });
+      this.user = localStorage.getItem('user');
     },
   },
 }
