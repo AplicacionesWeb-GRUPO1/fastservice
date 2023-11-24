@@ -40,7 +40,7 @@
         this.$root.$data.onlogged = false;
         setTimeout(() => {
           window.location.reload();
-        }, 300);
+        }, 500);
       }
     }
   }

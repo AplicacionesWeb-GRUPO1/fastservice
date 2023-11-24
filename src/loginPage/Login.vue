@@ -56,7 +56,7 @@ export default {
             this.$router.push('/home');
             setTimeout(() => {
               window.location.reload();
-            }, 300);
+            }, 500);
           })
           .catch(error => {
             console.log(error);
