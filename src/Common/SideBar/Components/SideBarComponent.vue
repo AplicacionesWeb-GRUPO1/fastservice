@@ -7,7 +7,7 @@
     data() {
       return{
         roles:{
-          cliente:{
+          Client:{
             backgroundColor: 'linear-gradient(to right, #3294EF, #07D9AD)',
             options: [
               { name: 'Home', icon: 'pi pi-home', link: '/home' },

@@ -40,6 +40,7 @@ export default {
 .p-inputgroup {
   display: flex;
   align-items: center;
+  margin-top: 10px; /* Ajusta el espaciado entre inputs */
 }
 
 .p-inputgroup-addon {
@@ -47,7 +48,6 @@ export default {
   border: none;
   border-right: 1px solid #ccc;
   padding: 0.5rem;
-  height: auto;
 }
 
 .p-inputtext {
@@ -56,11 +56,6 @@ export default {
   border: 1px solid #ccc;
   border-left: none;
   border-radius: 0 4px 4px 0;
-  height: auto;
   font-size: 12px;
-}
-
-span button{
-  background: #cccccc;
 }
 </style>

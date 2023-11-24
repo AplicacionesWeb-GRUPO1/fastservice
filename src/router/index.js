@@ -11,6 +11,7 @@ import Publications from "@/clients/ClientPublications/publicationPosts.vue";
 
 
 import Login from "@/loginPage/Login.vue";
+import SignUp from "@/loginPage/SignUp.vue";
 
 
 
@@ -69,6 +70,11 @@ const router = createRouter({
       path: '/login',
       name: 'Login',
       component: Login,
+    },
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: SignUp,
     },
     {
       path: '/clients/services',
