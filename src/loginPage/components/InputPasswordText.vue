@@ -5,7 +5,7 @@
     </span>
     <input class="p-inputtext" :placeholder="placeholder" :type="inputType" :value="modelValue" @input="updateValue" />
     <span>
-      <button class="p-link p-button p-button-icon p-button-rounded p-button-sm" @click="togglePasswordVisibility">
+      <button class="p-button p-button-icon p-button-rounded p-button-sm p-button-info p-button-visible" @click="togglePasswordVisibility">
         <i :class="passwordVisible ? 'pi pi-eye' : 'pi pi-eye-slash'"></i>
       </button>
     </span>
@@ -40,7 +40,7 @@ export default {
 .p-inputgroup {
   display: flex;
   align-items: center;
-  margin-top: 10px; /* Ajusta el espaciado entre inputs */
+  margin-top: 10px;
 }
 
 .p-inputgroup-addon {
@@ -57,5 +57,9 @@ export default {
   border-left: none;
   border-radius: 0 4px 4px 0;
   font-size: 12px;
+}
+
+.p-button-visible {
+  visibility: visible !important;
 }
 </style>
