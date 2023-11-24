@@ -47,42 +47,40 @@ export default {
   methods: {
     login() {
       const credentials = {username: this.username, password: this.password};
-
       this.authService.getToken(credentials)
           .then(response => {
-
             const { token, ...userData }= response.data;
-
             this.saveToken(token);
             this.saveUser(userData.role, userData.userName);
             this.$root.$data.onlogged = true;
             this.$router.push('/home');
+            setTimeout(() => {
+              window.location.reload();
+            }, 500);
           })
           .catch(error => {
             console.log(error);
           });
+
     },
     saveToken(token){
-
-      localStorage.setItem("token", token);
+      localStorage.setItem('token', token);
       const baseService = new BaseService();
       baseService.setAuthorizationHeader(token);
 
     },
-    saveUser(rol, username){
-
+    saveUser(rol, username) {
       let service;
-      if(rol === "expert"){
+      if (rol === "expert") {
         service = new ExpertApiService();
-      }else if(rol ==="client"){
+      } else if (rol === "client") {
         service = new ClientApiService();
       }
-      rol= rol+"s";
+      rol = rol + "s";
       service.getUsersByUsername(rol, username)
-          .then(response =>{
-            this.user= response;
-            this.$root.$data.loggedUser = this.user;
-            localStorage.setItem("user", JSON.stringify(this.user));
+          .then(response => {
+            localStorage.setItem('user', JSON.stringify(response));
+            console.log("User saved in localStorage:", response);
           })
     }
 
