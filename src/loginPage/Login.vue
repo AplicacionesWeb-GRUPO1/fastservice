@@ -52,11 +52,16 @@ export default {
             const { token, ...userData }= response.data;
             this.saveToken(token);
             this.saveUser(userData.role, userData.userName);
-            this.$root.$data.onlogged = true;
-            this.$router.push('/home');
-            setTimeout(() => {
-              window.location.reload();
-            }, 500);
+            const storedUser = localStorage.getItem('user');
+
+            if(storedUser) {
+              this.$root.$data.onlogged = true;
+              this.$router.push('/home');
+              setTimeout(() => {
+                window.location.reload();
+              }, 500);
+            }
+
           })
           .catch(error => {
             console.log(error);

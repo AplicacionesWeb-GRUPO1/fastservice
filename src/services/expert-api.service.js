@@ -5,6 +5,8 @@ export class ExpertApiService extends BaseService {
     constructor() {
         super();
     }
-
+    async getAllExperts() {
+        return this.getAll("experts");
+    }
 }
 

@@ -84,10 +84,10 @@ export default {
  },
  methods: {
      getRecommendedExperts(){
-       this.expertApiService.getExperts()
+       this.expertApiService.getAllExperts()
            .then(response => {
-             this.experts = response.data;
-             console.log(this.experts);
+             this.experts = response;
+             console.log(response);
        })
      }
  },

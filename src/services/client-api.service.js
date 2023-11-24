@@ -5,9 +5,9 @@ export class ClientApiService extends BaseService {
     constructor() {
         super();
     }
-    //getUsers() {
-    //    return this.http.get("/clients");
-    //}
 
+    async getAllClients() {
+        return this.getAll("clients");
+    }
 }
 
