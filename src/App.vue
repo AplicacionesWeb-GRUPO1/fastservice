@@ -1,6 +1,5 @@
 <template>
   <div v-if="onlogged">
-    <h1>{{loggedUser}}</h1>
     <side-bar-content :user="loggedUser" v-if="loggedUser"/>
     <div class="content">
       <nav-bar :name="loggedUser.name"/>
