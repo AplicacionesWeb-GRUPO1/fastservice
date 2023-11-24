@@ -51,9 +51,9 @@ export default {
       this.authService.getToken(credentials)
           .then(response => {
             const { token, ...userData } = response.data;
-            console.log("token", token);
-            console.log("userData", userData);
-            localStorage.setItem("token", token);
+            this.saveToken(token);
+            this.saveUser(userData.role, userData.username);
+
             this.$root.$data.onlogged = true; // Modificar el estado de onlogged
             this.$router.push('/home');
           })
@@ -70,7 +70,6 @@ export default {
   },
   saveUser(rol, username){
     let service;
-
     if(rol === "expert"){
       service = new ExpertApiService();
     }else if(rol ==="client"){
