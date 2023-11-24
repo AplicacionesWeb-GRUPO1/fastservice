@@ -3,16 +3,16 @@
     <main>
       <div class="login-container">
         <Card title="Inicio de Sesión" class="login-card">
-          <div>
-            <InputText v-model="username" placeholder="Nombre de usuario" />
-            <InputPasswordText v-model="password" placeholder="Contraseña" />
+          <div class="large-content">
+            <InputText v-model="username" placeholder="Nombre de usuario" class="large-input" />
+            <InputPasswordText v-model="password" placeholder="Contraseña" class="large-input" />
             <div class="forgot-password">
-              <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
+              <a href="/forgot-password" class="large-link">¿Olvidaste tu contraseña?</a>
             </div>
             <div class="forgot-password">
-              <a href="/forgot-password">Aún no tiene cuenta? Registrese aquí</a>
+              <a href="/forgot-password" @click.prevent="$router.push('/signup')" class="large-link">Aún no tiene cuenta? Regístrese aquí</a>
             </div>
-            <Button @click="login">Login</Button>
+            <Button @click="login" class="large-button">Login</Button>
           </div>
         </Card>
       </div>
@@ -25,6 +25,10 @@ import Card from "@/loginPage/components/Card.vue";
 import Button from "@/loginPage/components/Button.vue";
 import InputText from "@/loginPage/components/InputText.vue";
 import InputPasswordText from "@/loginPage/components/InputPasswordText.vue";
+import {AuthServiceApiService} from "@/services/AuthService-api.service";
+import {BaseService} from "@/services/BaseService-api.service";
+import {ExpertApiService} from "@/services/expert-api.service";
+import {ClientApiService} from "@/services/client-api.service";
 
 export default {
   components: {
@@ -37,13 +41,44 @@ export default {
     return {
       username: "",
       password: "",
+      authService: new AuthServiceApiService(),
     };
   },
   methods: {
     login() {
-      // ...
+      console.log("Credentials: ", this.username, this.password);
+      const credentials = {username: this.username, password: this.password};
+      this.authService.getToken(credentials)
+          .then(response => {
+            const { token, ...userData } = response.data;
+            console.log("token", token);
+            console.log("userData", userData);
+            localStorage.setItem("token", token);
+            this.$root.$data.onlogged = true; // Modificar el estado de onlogged
+            this.$router.push('/home');
+          })
+          .catch(error => {
+            console.log(error);
+          });
     },
+
   },
+  saveToken(token){
+    localStorage.setItem("token", token);
+    const baseService = new BaseService();
+    baseService.setAuthorizationHeader(token);
+  },
+  saveUser(rol, username){
+    let service;
+
+    if(rol === "expert"){
+      service = new ExpertApiService();
+    }else if(rol ==="client"){
+      service = new ClientApiService();
+    }
+
+    this.$router.push('/home');
+  }
 };
 </script>
 
@@ -57,7 +92,6 @@ export default {
 }
 
 body {
-  background-image: url('https://media.discordapp.net/attachments/1143002754432893131/1157483277892988998/login-background.jpg?ex=6518c5ce&is=6517744e&hm=d72ba5aab3484a058ac729cb1393e95ee3aac55aff4145752c663a0a24b32698&=&width=1001&height=676');
   background-size: cover;
 }
 
@@ -69,9 +103,11 @@ body {
 }
 
 .login-card {
-  width: 300px;
+  width: 600px;
   padding: 1rem;
-  margin-top: 12%;
+  margin-top: 6%;
+  font-size: 18px; /* Ajusta el tamaño del texto en todos los elementos dentro de la tarjeta */
+
 }
 
 .forgot-password {
@@ -84,4 +120,26 @@ body {
   text-decoration: none;
   font-size: 10px;
 }
+
+.large-content {
+  font-size: 18px; /* Ajusta el tamaño del contenido */
+}
+
+.large-input {
+  font-size: 18px; /* Ajusta el tamaño del texto del input */
+  padding: 15px; /* Ajusta el padding para aumentar el tamaño del input */
+  margin-bottom: 20px; /* Espaciado inferior */
+}
+
+.large-link {
+  font-size: 16px; /* Ajusta el tamaño del texto de los enlaces */
+  margin-top: 10px; /* Espaciado superior */
+}
+
+.large-button {
+  font-size: 18px; /* Ajusta el tamaño del texto del botón */
+  padding: 15px 25px; /* Ajusta el padding para aumentar el tamaño del botón */
+  margin-top: 20px; /* Espaciado superior */
+}
+
 </style>

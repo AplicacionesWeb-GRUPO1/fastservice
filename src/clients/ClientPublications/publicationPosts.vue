@@ -8,23 +8,16 @@
         <div class="job-post-content">
           <div class="image-section">
             <img :src="jobPost.service_image" :alt="jobPost.image_description" class="image" />
-            <div class="image-description">{{ jobPost.image_description }}</div>
+            <div class="image-description">{{ jobPost.title }}</div>
           </div>
           <div class="details-section">
-            <div class="title">
+            <div class="title font-bold">
               <strong v-if="editingPost === jobPost.id">
                 <input class="edit-input" v-model="jobPost.title" />
               </strong>
               <span v-else>{{ jobPost.title }}</span>
             </div>
             <div class="info">
-              <div class="payment">
-                <label class="label">Pago Ofrecido</label>
-                <div class="content" v-if="editingPost === jobPost.id">
-                  <input class="edit-input" v-model="jobPost.payment_offered" />
-                </div>
-                <div class="content" v-else>${{ jobPost.payment_offered }}</div>
-              </div>
               <div class="location">
                 <label class="label">Dirección</label>
                 <div class="content" v-if="editingPost === jobPost.id">
