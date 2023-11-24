@@ -1,8 +1,9 @@
 <template>
   <div v-if="onlogged">
-    <side-bar-content :user="user" v-if="user"/>
-    <div class="content" v-if="user">
-      <nav-bar :name="user.name"/>
+    <h1>{{loggedUser}}</h1>
+    <side-bar-content :user="loggedUser" v-if="loggedUser"/>
+    <div class="content">
+      <nav-bar :name="loggedUser.name"/>
       <router-view/>
     </div>
   </div>
@@ -31,33 +32,27 @@ export default {
   data() {
     return {
       users: [],
-      user: null,
+      loggedUser: {},
       clientsApi: new ClientApiService(),
       expertsApi: new ExpertApiService(),
       authService: new AuthServiceApiService(),
       onlogged: false
     }
   },
-  computed: {
-    isLoggedIn() {
-      return false;
-    }
-  },
   created() {
-    this.getSource();
+    const storedUser = localStorage.getItem("user");
+    console.log("asd", storedUser);
+
+    if (storedUser) {
+      console.log("asd");
+      this.loggedUser = JSON.parse(storedUser);
+      this.onlogged = true;
+    } else {
+      this.getSource();
+    }
   },
   methods: {
     getSource(){
-      this.clientsApi.getUsers()
-          .then(response =>{
-            console.log(response);
-            this.user= response.user_client;
-            console.log("usario", this.user);
-            //  this.user = this.users[0]; // Asignar el primer usuario por defecto
-            console.log("user", this.user.name);
-            console.log("user", this.user.role);
-
-          })
     }
 
   //  getSource(){

@@ -4,10 +4,20 @@ import axios from "axios";
 export class BaseService {
     constructor() {
         this.http = axios.create({
-            baseURL: "https://turincon-fast-service.azurewebsites.net/api/v1"// URL base de la API
+            baseURL: "https://localhost:7020/api/v1"// URL base de la API
         });
     }
     setAuthorizationHeader(token) {
         this.http.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    async getUsersByUsername(endpoint, username) {
+        try {
+            const response = await this.http.get(`/${endpoint}/getbyusername/${username}`);
+            console.log("endpoint: ", response.data);
+            return response.data;
+        } catch (error) {
+            throw new Error(`Error getting users: ${error}`);
+        }
     }
 }
