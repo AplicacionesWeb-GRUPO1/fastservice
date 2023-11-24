@@ -37,9 +37,10 @@
       logout() {
         // Limpiar datos y cerrar sesión
         localStorage.removeItem('user');
-        localStorage.removeItem('token');
         this.$root.$data.onlogged = false;
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 300);
       }
     }
   }
