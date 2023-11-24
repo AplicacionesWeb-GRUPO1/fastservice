@@ -9,18 +9,23 @@
             <InputText v-model="userName" placeholder="Nombre de usuario" class="large-input" />
             <InputPasswordText v-model="password" placeholder="Contraseña" class="large-input" />
             <InputText v-model="phone" placeholder="Teléfono" class="large-input" />
-            <Calendar v-model="birthdayDate" class="p-inputtext" :input-style-class="{'large-input': true}" placeholder="Fecha de nacimiento"></Calendar>
+            <div class="button-action">
+              <div class="input-container">
+                <Calendar v-model="birthdayDate" class="p-inputtext" :input-style-class="{'large-input': true}" placeholder="Fecha de nacimiento"></Calendar>
+              </div>
 
-            <select v-model="role" class="large-input">
-              <option value="expert">Experto</option>
-              <option value="client">Cliente</option>
-            </select>
+              <div class="input-container">
+                <select v-model="role" class="large-input">
+                  <option value="expert">Experto</option>
+                  <option value="client">Cliente</option>
+                </select>
+              </div>
 
-            <Button @click="register" :disabled="isRegistering" class="large-button">Registrarse</Button>
+              <Button @click="register" :disabled="isRegistering" class="large-button">Registrarse</Button>
+            </div>
           </div>
         </Card>
       </div>
-
     </main>
   </div>
 </template>
@@ -52,29 +57,33 @@ export default {
       birthdayDate: null,
       role: "",
       authService: new AuthServiceApiService(),
-      isRegistering: false, // Nuevo estado para controlar el registro
+      isRegistering: false,
     };
   },
   methods: {
     register() {
-      if(!this.isRegistering){
+
+      if (!this.isRegistering) {
+        // Agregar el prefijo "+51" al número de teléfono
+        const formattedPhone = "+51" + this.phone;
         const formattedBirthdayDate = this.formatDate(this.birthdayDate);
+
         const signUpData = new SignUpData(
             this.name,
             this.lastName,
             this.userName,
             this.password,
-            this.phone,
+            formattedPhone, // Usar el número formateado
             formattedBirthdayDate,
             this.role
         );
-
         this.post(signUpData);
         this.isRegistering = true;
         this.$router.push('/login');
       }
     },
     post(signUpData){
+
       this.authService.createUser(signUpData)
           .then(response => {
             console.log("datos de registro: ", signUpData);
@@ -98,4 +107,24 @@ export default {
 };
 </script>
 
-<!-- Add your styles here -->
+<style>
+.large-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-action {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.input-container {
+  flex: 1;
+}
+
+</style>
