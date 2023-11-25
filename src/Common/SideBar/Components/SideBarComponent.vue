@@ -19,7 +19,7 @@
               { name: 'Log Out', icon: 'pi pi-sign-out', link: '/login' },
             ],
           },
-          experto:{
+          expert:{
             backgroundColor: 'linear-gradient(to right, #EF3232, #90A2FF)',
             options: [
               { name: 'Home', icon: 'pi pi-home', link: '/home' },

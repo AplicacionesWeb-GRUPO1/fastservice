@@ -3,7 +3,6 @@ import PageShowAppointmentsContent from "@/clients/ExpertsAppointmentsScreen/pag
 import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.component.vue";
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
 import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.component.vue";
-import HomeContent from "@/clients/ClientHomePage/home.content.component.vue";
 import PageServicesPayment from "@/clients/ServicesPaymentPage/pageServicesPayment.vue";
 import NotificationsPage from "@/clients/NotificationsPage/notifications.vue";
 import HiredServices from "@/clients/HiredServices/hiredServices.vue";
@@ -12,6 +11,7 @@ import Publications from "@/clients/ClientPublications/publicationPosts.vue";
 
 import Login from "@/loginPage/Login.vue";
 import SignUp from "@/loginPage/SignUp.vue";
+import HomePage from "@/Common/Pages/Home/HomePage.vue";
 
 
 
@@ -21,12 +21,12 @@ const router = createRouter({
     {
       path: '/home',
       name: '',
-      component: HomeContent,
+      component: HomePage,
     },
     {
       path: '/',
-      name: 'home',
-      redirect: 'home'
+      name: 'login',
+      redirect: 'login'
     },
 
     {
