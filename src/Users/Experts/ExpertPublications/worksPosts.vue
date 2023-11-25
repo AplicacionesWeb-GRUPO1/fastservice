@@ -1,209 +1,74 @@
 <template>
-  <div class="job-posts">
-    <Card v-for="jobPost in filteredJobPosts" :key="jobPost.id" class="job-card">
+  <div class="expert-home">
+    <!-- Muestra los contratos en estado 'trabajando' del usuario -->
+    <Card v-for="contract in userContracts" :key="contract.id" class="contract-card">
       <div class="p-fluid">
-        <div class="job-post-content">
-          <div class="image-section">
-            <img :src="jobPost.image" :alt="jobPost.title" class="image" />
-            <div class="image-description">{{ jobPost.title }}</div>
+        <div class="contract-details">
+          <div class="contract-info">
+            <div class="contract-label">ID del Contrato:</div>
+            <div class="contract-value">{{ contract.id }}</div>
           </div>
-          <div class="details-section">
-            <div class="title font-bold">
-              <strong v-if="editingPost === jobPost.id">
-                <input class="edit-input" v-model="jobPost.title" />
-              </strong>
-              <span v-else>{{ jobPost.title }}</span>
-            </div>
-            <div class="info">
-              <div class="location">
-                <label class="label">Dirección</label>
-                <div class="content" v-if="editingPost === jobPost.id">
-                  <input class="edit-input" v-model="jobPost.address" />
-                </div>
-                <div class="content" v-else>{{ jobPost.address }}</div>
-              </div>
-            </div>
-            <div class="description">
-              <label class="label">Descripción del servicio</label>
-              <div class="content" v-if="editingPost === jobPost.id">
-                <textarea class="edit-input" v-model="jobPost.description"></textarea>
-              </div>
-              <div class="content" v-else>{{ jobPost.description }}</div>
-            </div>
-            <div class="status">
-              <div v-if="jobPost.isPublished === false" class="completed-status">Publicado</div>
-              <button v-else @click="acceptJob(jobPost)">Aceptar Trabajo</button>
-            </div>
+          <div class="contract-info">
+            <div class="contract-label">Dirección:</div>
+            <div class="contract-value">{{ contract.address }}</div>
+          </div>
+          <div class="contract-info">
+            <div class="contract-label">Título:</div>
+            <div class="contract-value">{{ contract.title }}</div>
+          </div>
+          <div class="contract-info">
+            <div class="contract-label">Descripción:</div>
+            <div class="contract-value">{{ contract.description }}</div>
+          </div>
+          <div class="contract-info">
+            <div class="contract-label">Publicado:</div>
+            <div class="contract-value">{{ contract.isPublished ? 'Sí' : 'No' }}</div>
+          </div>
+          <div class="contract-info">
+            <div class="contract-label">ID del Cliente:</div>
+            <div class="contract-value">{{ contract.clientId }}</div>
+          </div>
+          <div class="contract-info">
+            <div class="contract-label">Imagen:</div>
+            <div class="contract-value">{{ contract.image }}</div>
           </div>
         </div>
-        <button v-if="editingPost === jobPost.id" @click="saveChanges(jobPost)">Guardar</button>
       </div>
     </Card>
   </div>
 </template>
 
 <script>
-import { JobPublicationsApiService } from "@/services/JobPublications-api.service";
 import { ContractServiceApiService } from "@/services/ContractService-api.service";
 
 export default {
-  name: 'Publications',
+  name: 'ExpertHome',
   data() {
     return {
-      job_posts: [],
-      editingPost: null,
+      userContracts: [],
     };
   },
   methods: {
-    async getPostService() {
-      const currentUser = JSON.parse(localStorage.getItem('user'));
-      const jobPublicationsApiService = new JobPublicationsApiService();
+    async getContractsTrabajando(user) {
+      // Lógica para obtener los contratos en estado 'trabajando' del usuario
+      const contractService = new ContractServiceApiService();
       try {
-        const jobPosts = await jobPublicationsApiService.getAllJobPost();
-        this.job_posts = jobPosts;
-        console.log("job_posts", jobPosts);
+        const contractsTrabajando = await contractService.getContractsTrabajando(user.id);
+        this.userContracts = contractsTrabajando;
+        console.log("Contratos en estado 'trabajando' del usuario:", contractsTrabajando);
       } catch (error) {
-        console.error("Error fetching job posts:", error);
+        console.error("Error fetching user contracts:", error);
       }
-    },
-    async acceptJob(jobPost) {
-      try {
-        const currentUser = JSON.parse(localStorage.getItem('user'));
-        const contractService = new ContractServiceApiService();
-
-        // Crear un contrato con la información necesaria
-        const contractData = {
-          publicationId: jobPost.id,
-          expertId: currentUser.id,
-          price: 0, // Puedes establecer el precio aquí
-          state: "progress",
-          date: new Date().toISOString(),
-        };
-
-        // Llamada al servicio para crear el contrato
-        const createdContract = await contractService.createContract(contractData);
-
-        // Otros pasos después de aceptar el trabajo...
-        console.log("Contrato creado:", createdContract);
-
-        // Puedes realizar otras acciones si es necesario
-
-        // Marcar el trabajo como aceptado
-        this.markAsCompleted(jobPost);
-
-      } catch (error) {
-        console.error("Error al aceptar el trabajo:", error);
-      }
-    },
-    markAsCompleted(jobPost) {
-      jobPost.isPublished = false;
-    },
-    startEditing(jobPost) {
-      this.editingPost = jobPost.id;
-    },
-    saveChanges(jobPost) {
-      this.editingPost = null;
     },
   },
   created() {
-    this.getPostService();
-  },
-  computed: {
-    filteredJobPosts() {
-      return this.job_posts.filter(jobPost => jobPost.isPublished);
-    }
+    // Llama al método para obtener los contratos al cargar el componente
+    const currentUser = JSON.parse(localStorage.getItem('user'));
+    this.getContractsTrabajando(currentUser);
   },
 };
 </script>
 
 <style scoped>
-.job-posts {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 20px;
-}
-
-.job-card {
-  position: relative;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0.1, 0.1, 0.1, 0.2);
-  background-color: #FFFFFF;
-}
-
-.job-post-content {
-  display: flex;
-  justify-content: space-between;
-}
-
-.image-section {
-  max-width: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.image {
-  max-width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.image-description {
-  color: #0d3c61;
-  margin-top: 5px;
-}
-
-.details-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  margin-left: 15px;
-}
-
-.title {
-  margin-bottom: 10px;
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.label {
-  font-weight: bold;
-}
-
-.completed-status {
-  color: green;
-  margin-top: 5px;
-}
-
-button {
-  background-color: #d98100;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.edit-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  background-color: #e0e0e0;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.edit-input {
-  width: 20em;
-  height: 30px;
-}
+/* Agrega estilos según sea necesario */
 </style>
