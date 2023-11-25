@@ -9,11 +9,8 @@ import Publications from "@/clients/ClientPublications/publicationPosts.vue";
 import Login from "@/loginPage/Login.vue";
 import SignUp from "@/loginPage/SignUp.vue";
 import HomePage from "@/Common/Pages/Home/HomePage.vue";
-<<<<<<< HEAD
-import Works from "@/expert/ExpertPublications/worksPosts.vue"
-=======
 import PaymentsPage from "@/Common/Pages/Payments/PaymentsPage.vue";
->>>>>>> 450ff7ab65b734d945d8516f3bc5ce4fb4583eb7
+import WorksPosts from "@/Users/Experts/ExpertPublications/worksPosts.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -95,7 +92,7 @@ const router = createRouter({
     {
       path: '/works',
       name: 'Works',
-      component: Works,
+      component: WorksPosts,
       meta: { requiresAuth: true },
     },
   ],
