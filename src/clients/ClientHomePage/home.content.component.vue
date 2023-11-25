@@ -74,7 +74,7 @@
 <script >
 import {ExpertApiService} from "@/services/expert-api.service";
 export default {
- name: 'HomeContent',
+ name: 'ClientHome',
  data() {
    return {
      experts: [],
