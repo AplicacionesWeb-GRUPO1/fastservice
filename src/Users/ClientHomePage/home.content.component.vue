@@ -50,20 +50,15 @@
             <div class="user-stat">
               <div class="user-stat-label">Trabajos Completados</div>
               <div class="user-stat-value">10</div>
-              <!-- <div class="user-stat-value">{{ expert.jobs_completed }}</div> -->
             </div>
             <div class="user-stat">
               <div class="user-stat-label">Reseñas</div>
               <div class="user-stat-value">10</div>
-              <!--<div class="user-stat-value">{{ expert.review_count }}<!/div>-->
             </div>
           </div>
-          <div class="availability-indicator" :class="expert.id ? 'available' : 'unavailable'">
-            {{ expert.id ? 'Disponible' : 'No Disponible' }}
+          <div class="availability-indicator" :class="expert.id ? (expert.rating <= 3 ? 'available' : 'unavailable') : 'unavailable'">
+            {{ expert.id ? (expert.rating <= 3 ? 'Disponible' : 'No Disponible') : 'No Disponible' }}
           </div>
-          <!--<div class="availability-indicator" :class="expert.available ? 'available' : 'unavailable'">
-           {{ expert.available ? 'Disponible' : 'No Disponible' }}
-         </div>-->
        </Card>
      </div>
    </section>
