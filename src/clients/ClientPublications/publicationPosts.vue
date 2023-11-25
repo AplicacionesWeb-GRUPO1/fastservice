@@ -43,6 +43,30 @@
       </div>
     </Card>
   </div>
+   <br>
+  <div>
+    <button @click="toggleCreateForm">Nueva Publicación</button>
+    <form v-if="showCreateForm" @submit.prevent="createPost">
+      <div>
+        <label for="newTitle">Título:</label>
+        <input v-model="newPost.title" type="text" id="newTitle" required />
+      </div>
+      <div>
+        <label for="newAddress">Dirección:</label>
+        <input v-model="newPost.address" type="text" id="newAddress" required />
+      </div>
+      <div>
+        <label for="newDescription">Descripción del servicio:</label>
+        <textarea v-model="newPost.description" id="newDescription" required></textarea>
+      </div>
+      <div>
+        <label for="newImage">Imagen:</label>
+        <input type="file" @change="handleImageChange" accept="image/*" id="newImage" />
+      </div>
+      <button type="submit">Crear Publicación</button>
+    </form>
+  </div>
+  <br>
 </template>
 
 <script>
@@ -54,6 +78,12 @@ export default {
     return {
       job_posts: [],
       editingPost: null,
+      showCreateForm: false,
+      newPost: {
+        title: '',
+        address: '',
+        description: '',
+      },
     };
   },
   methods: {
@@ -77,9 +107,38 @@ export default {
     saveChanges(jobPost) {
       this.editingPost = null;
     },
-    createPost(){
-      //
+    handleImageChange(event) {
+      const file = event.target.files[0];
+      if (file) {
+        this.newPost.image = file;
+      }
+    },
+    toggleCreateForm() {
+      this.showCreateForm = !this.showCreateForm;
+    },
+    async createPost() {
+      try {
+        const currentUser = JSON.parse(localStorage.getItem('user'));
+        const jobPublicationsApiService = new JobPublicationsApiService();
+
+        const postData = {
+          title: this.newPost.title,
+          address: this.newPost.address,
+          description: this.newPost.description,
+        };
+
+        // Send the new publication data to the server
+        await jobPublicationsApiService.createPublication(postData);
+
+        // Actualiza la lista de publicaciones
+        await this.getPostService();
+
+        this.showCreateForm = false;
+      } catch (error) {
+        console.error("Error creating job post:", error);
+      }
     }
+
   },
   created() {
     this.getPostService();
