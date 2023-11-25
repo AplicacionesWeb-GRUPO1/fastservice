@@ -1,5 +1,4 @@
 <script >
-import {UserApiService} from "@/services/user-api.service";
 import {ExpertApiService} from "@/services/expert-api.service";
 
 export default {
