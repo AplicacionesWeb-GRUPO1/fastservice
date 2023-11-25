@@ -42,7 +42,6 @@
           this.user_info = response.data.user_info;
           this.name= this.user_info.user.name;
           this.cellphone= this.user_info.user.number;
-
         });
       },
     },

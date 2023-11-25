@@ -17,6 +17,7 @@
 <script>
 import CardComponent from '@/clients/HiredServices/Components/card.vue';
 import { UserApiService } from "@/services/user-api.service";
+import {ContractServiceApiService} from "@/services/ContractService-api.service";
 
 export default {
   components: {
@@ -31,11 +32,16 @@ export default {
     this.getHiredServices();
   },
   methods: {
-    getHiredServices() {
-      const userApiService = new UserApiService();
-      userApiService.getSources().then((response) => {
-        this.hiredServices = response.data.user_info.hiredServices;
-      });
+     async getHiredServices() {
+      const currentUser = JSON.parse(localStorage.getItem('user'));
+      const contractServiceApiService = new ContractServiceApiService();
+      try {
+        const contracts = await contractServiceApiService.getContractsAceptado(currentUser.id);
+        this.hiredServices = contracts;
+        console.log("asd", contracts);
+      } catch (error) {
+        console.error("Error fetching job posts:", error);
+      }
     },
     eliminarTarjeta(id) {
       this.hiredServices = this.hiredServices.filter((hiredService) => hiredService.id !== id);
