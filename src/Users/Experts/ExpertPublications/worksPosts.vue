@@ -46,14 +46,16 @@ export default {
   data() {
     return {
       userContracts: [],
+      contractServices: null
     };
   },
   methods: {
-    async getContractsTrabajando(user) {
+    async getContractsTrabajando() {
       // Lógica para obtener los contratos en estado 'trabajando' del usuario
-      const contractService = new ContractServiceApiService();
+      const currentUser = JSON.parse(localStorage.getItem('user'));
+      const contractServiceApiService = new ContractServiceApiService();
       try {
-        const contractsTrabajando = await contractService.getContractsTrabajando(user.id);
+        const contractsTrabajando = await contractServiceApiService.getContractsTrabajando(currentUser);
         this.userContracts = contractsTrabajando;
         console.log("Contratos en estado 'trabajando' del usuario:", contractsTrabajando);
       } catch (error) {
@@ -63,8 +65,8 @@ export default {
   },
   created() {
     // Llama al método para obtener los contratos al cargar el componente
-    const currentUser = JSON.parse(localStorage.getItem('user'));
-    this.getContractsTrabajando(currentUser);
+    this.getContractsTrabajando();
+    const contractServices = new ContractServiceApiService();
   },
 };
 </script>
