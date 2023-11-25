@@ -22,6 +22,24 @@ export class BaseService {
         }
     }
 
+    async Create(endpoint, data) {
+        try {
+            const response = await this.http.post(`/${endpoint}`, data);
+            return response.data;
+        } catch (error) {
+            throw new Error(`Error creating data: ${error}`);
+        }
+    }
+
+    async update(endpoint, itemId, newData) {
+        try {
+            const response = await this.http.put(`/${endpoint}/${itemId}`, newData);
+            return response.data;
+        } catch (error) {
+            throw new Error(`Error updating data: ${error}`);
+        }
+    }
+
     async getUsersByUsername(endpoint, username) {
         try {
             const response = await this.http.get(`/${endpoint}/getbyusername/${username}`);

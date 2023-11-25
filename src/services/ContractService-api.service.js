@@ -11,6 +11,15 @@ export class ContractServiceApiService extends BaseService {
         return this.getAll(this.endpoint);
     }
 
+    async createContract(contractData) {
+        return this.create(this.endpoint, contractData);
+    }
+
+    async updateContract(contractData, contractId) {
+        return this.update(this.endpoint, contractData, contractData);
+    }
+
+
     async getByStatus(userId,status) {
         const filterByStatus = (contract) =>
             ((contract.state === status)&& (contract.publication.client.id === userId));

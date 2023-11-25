@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import CardComponent from '@/clients/NotificationsPage/Components/card.vue';
+import CardComponent from '@/clients/NotificationsPage/Components/clientNotificationCard.vue';
 import {ContractServiceApiService} from "@/services/ContractService-api.service";
 
 export default {
