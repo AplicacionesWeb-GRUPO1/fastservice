@@ -32,7 +32,7 @@
             </div>
             <div class="status">
               <div v-if="jobPost.isPublished === false" class="completed-status">Publicado</div>
-              <button v-else @click="markAsCompleted(jobPost)">Aceptar Trabajo</button>
+              <button v-else @click="acceptJob(jobPost)">Aceptar Trabajo</button>
             </div>
           </div>
         </div>
@@ -43,7 +43,8 @@
 </template>
 
 <script>
-import {JobPublicationsApiService} from "@/services/JobPublications-api.service";
+import { JobPublicationsApiService } from "@/services/JobPublications-api.service";
+import { ContractServiceApiService } from "@/services/ContractService-api.service";
 
 export default {
   name: 'Publications',
@@ -65,6 +66,35 @@ export default {
         console.error("Error fetching job posts:", error);
       }
     },
+    async acceptJob(jobPost) {
+      try {
+        const currentUser = JSON.parse(localStorage.getItem('user'));
+        const contractService = new ContractServiceApiService();
+
+        // Crear un contrato con la información necesaria
+        const contractData = {
+          publicationId: jobPost.id,
+          expertId: currentUser.id,
+          price: 0, // Puedes establecer el precio aquí
+          state: "progress",
+          date: new Date().toISOString(),
+        };
+
+        // Llamada al servicio para crear el contrato
+        const createdContract = await contractService.createContract(contractData);
+
+        // Otros pasos después de aceptar el trabajo...
+        console.log("Contrato creado:", createdContract);
+
+        // Puedes realizar otras acciones si es necesario
+
+        // Marcar el trabajo como aceptado
+        this.markAsCompleted(jobPost);
+
+      } catch (error) {
+        console.error("Error al aceptar el trabajo:", error);
+      }
+    },
     markAsCompleted(jobPost) {
       jobPost.isPublished = false;
     },
@@ -83,7 +113,7 @@ export default {
       return this.job_posts.filter(jobPost => jobPost.isPublished);
     }
   },
-}
+};
 </script>
 
 <style scoped>
@@ -103,7 +133,6 @@ export default {
   box-shadow: 0 4px 6px rgba(0.1, 0.1, 0.1, 0.2);
   background-color: #FFFFFF;
 }
-
 
 .job-post-content {
   display: flex;

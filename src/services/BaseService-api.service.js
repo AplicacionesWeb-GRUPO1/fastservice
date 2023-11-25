@@ -22,7 +22,7 @@ export class BaseService {
         }
     }
 
-    async Create(endpoint, data) {
+    async create(endpoint, data) {
         try {
             const response = await this.http.post(`/${endpoint}`, data);
             return response.data;

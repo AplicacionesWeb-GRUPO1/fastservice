@@ -16,7 +16,7 @@ export class ContractServiceApiService extends BaseService {
     }
 
     async updateContract(contractData, contractId) {
-        return this.update(this.endpoint, contractData, contractData);
+        return this.update(`${this.endpoint}/${contractId}`, contractData);
     }
 
 
