@@ -7,7 +7,7 @@
         :rol="hiredService.expert.specialty"
         :trabajoSolicitado="hiredService.publication.description"
         :estadoTrabajo="hiredService.state"
-        :foto="hiredService.expert.avatar"
+        :foto="hiredService.publication.image"
         @aceptar="eliminarTarjeta(hiredService.id)"
         @rechazar="eliminarTarjeta(hiredService.id)"
       />
@@ -35,7 +35,7 @@ export default {
       const currentUser = JSON.parse(localStorage.getItem('user'));
       const contractServiceApiService = new ContractServiceApiService();
       try {
-        const contracts = await contractServiceApiService.getContractsAceptado(currentUser.id);
+        const contracts = await contractServiceApiService.getContractsAceptado(currentUser  );
         this.hiredServices = contracts;
         console.log("asd", contracts);
       } catch (error) {

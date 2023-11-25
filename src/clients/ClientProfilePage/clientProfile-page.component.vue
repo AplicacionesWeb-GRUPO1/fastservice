@@ -22,10 +22,6 @@ export default {
           user_tag: "birthdayDate",
           name: "Date of birth",
         },
-        {
-          user_tag: "description",
-          name: "Description",
-        },
       ],
       user:{},
       responsiveOptions: [
@@ -65,31 +61,17 @@ export default {
 <template>
   <div>
     <profile-images-content :name="user.name" :avatar="user.avatar" />
-    <div class="flex flex-row pt-4" style="zoom: 0.8;">
-      <div class="w-1/3 flex flex-col items-start">
+    <div class="flex flex-row pt-4" style="zoom: 1;">
+      <div class="w-1/2 flex flex-col items-start w-full"> <!-- Añadida la clase w-full aquí -->
+
         <h3 class="pl-2.5 font-bold w-full flex justify-center">Personal Information</h3>
         <div class="w-full" v-for="tag in Tags" :key="tag.name ">
           <personal-info-card-content :name="user[`${tag.user_tag}`]" :tagName="tag.name" />
         </div>
       </div>
-
-      <div class="w-2/3 flex flex-col items-start">
-        <h3 class="pl-2.5 font-bold w-full flex justify-center">Trabajos</h3>
-        <pv-carousel :value="user.work_img" :numVisible="3" :numScroll="3" :responsiveOptions="responsiveOptions">
-          <template #item="slotProps">
-            <div class="pt-0.5">  
-              <div class="p-2">
-                <img :src="slotProps.data" class="w-full shadow-2" />
-              </div>
-            </div>
-          </template>
-        </pv-carousel>
-      </div>
     </div>
   </div>
 </template>
-
-
 
 
 <style scoped>

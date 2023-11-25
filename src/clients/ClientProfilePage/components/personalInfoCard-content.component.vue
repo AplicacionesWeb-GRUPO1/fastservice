@@ -25,7 +25,7 @@ export default {
 </script>
 
 <template>
-  <div class="p-card h-13">
+  <div class="p-card h-20">
     <div class="p-card-body p-0 m-0 border-0">
       <div class="flex justify-between">
         <div class="card-title ">{{ tagName }}</div>
