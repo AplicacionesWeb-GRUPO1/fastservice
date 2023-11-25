@@ -33,5 +33,7 @@ export class ContractServiceApiService extends BaseService {
     async getContractsCancelado(userId) {
         return this.getByStatus(userId, 'cancelado');
     }
+
+  
 }
 

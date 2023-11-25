@@ -24,7 +24,7 @@
             options: [
               { name: 'Home', icon: 'pi pi-home', link: '/home' },
               { name: 'Profile', icon: 'pi pi-user', link: '/profile' },
-              { name: 'Works', icon: 'pi pi-briefcase', link: '/publications' },
+              { name: 'Works', icon: 'pi pi-briefcase', link: '/works' },
               { name: 'Notifications', icon: 'pi pi-bell', link: '/notifications' },
               { name: 'Payments', icon: 'pi pi-credit-card', link: '/servicespayment' },
               { name: 'Log Out', icon: 'pi pi-sign-out', link: '/login' },
