@@ -14,18 +14,17 @@
     <div class="card-right">
       <div class="first-line">
         <p class="blue-text">{{ `${nombre}` }}</p>
-        <p>{{ `solicitó el trabajo de` }}</p>
+        <p>{{ `acepto el trabajo con descripcion de :` }}</p>
       </div>
       <br>
       <div class="first-line">
         <p class="blue-text">{{ ` "${trabajoSolicitado}"` }}</p>
-        <p>{{ `a` }}</p>
+        <p>{{ `al costo de` }}</p>
         <p class="blue-text">{{ `${precio}` }}$</p>
       </div>
       <p class="gray-text">{{ `${fechaNotificacion}` }}</p>
       <div class="button-container">
-        <button class="green-button" @click="aceptar">Aceptar</button>
-        <button class="red-button" @click="rechazar">Rechazar</button>
+        <button class="green-button" @click="aceptar">Ok</button>
       </div>
     </div>
   </div>
