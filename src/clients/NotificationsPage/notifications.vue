@@ -18,6 +18,8 @@
 <script>
 import CardComponent from '@/clients/NotificationsPage/Components/card.vue';
 import { UserApiService } from "@/services/user-api.service";
+import {JobPublicationsApiService} from "@/services/JobPublications-api.service";
+import {ContractServiceApiService} from "@/services/ContractService-api.service";
 
 export default {
   components: {
@@ -32,11 +34,16 @@ export default {
     this.getNotifications();
   },
   methods: {
-    getNotifications() {
-      const userApiService = new UserApiService();
-      userApiService.getSources().then((response) => {
-        this.notifications = response.data.user_info.notifications;
-      });
+    async getNotifications() {
+      const currentUser = JSON.parse(localStorage.getItem('user'));
+      const contractServiceApiService = new ContractServiceApiService();
+      try {
+        const contractsNotifications = await contractServiceApiService.getContractsProgress(currentUser.id);
+        this.notifications = contractsNotifications;
+        console.log("asd", contractsNotifications);
+      } catch (error) {
+        console.error("Error fetching job posts:", error);
+      }
     },
     eliminarTarjeta(id) {
       this.notifications = this.notifications.filter((notificacion) => notificacion.id !== id);

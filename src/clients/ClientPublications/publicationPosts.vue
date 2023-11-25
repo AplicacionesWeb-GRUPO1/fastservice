@@ -57,14 +57,16 @@ export default {
     };
   },
   methods: {
-    getPostService() {
+    async getPostService() {
       const currentUser = JSON.parse(localStorage.getItem('user'));
       const jobPublicationsApiService = new JobPublicationsApiService();
-      jobPublicationsApiService.getAllJobPost().then((response) => {
-        this.job_posts = response;
-        this.job_posts = this.job_posts.filter((jobPost) => jobPost.client.id === currentUser.id);
-        console.log("job_posts",response);
-      });
+      try {
+        const jobPosts = await jobPublicationsApiService.getAllPublicationsByUserId(currentUser.id);
+        this.job_posts = jobPosts;
+        console.log("job_posts", jobPosts);
+      } catch (error) {
+        console.error("Error fetching job posts:", error);
+      }
     },
     markAsCompleted(jobPost) {
       jobPost.status = 'completed';

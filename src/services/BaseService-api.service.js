@@ -7,6 +7,7 @@ export class BaseService {
             baseURL: "https://turincon-fast-service.azurewebsites.net/api/v1"// URL base de la API
         });
     }
+
     setAuthorizationHeader(token) {
         this.http.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
@@ -30,4 +31,10 @@ export class BaseService {
             throw new Error(`Error getting users: ${error}`);
         }
     }
+
+    async getAllDataByUserId(userId, filterFunction, endpoint) {
+        const allItems = await this.getAll(endpoint);
+        return allItems.filter(filterFunction);
+    }
+
 }

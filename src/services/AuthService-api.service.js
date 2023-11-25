@@ -1,6 +1,7 @@
 import {BaseService} from "@/services/BaseService-api.service";
 import axios from "axios";
 
+
 export class AuthServiceApiService extends BaseService {
     constructor() {
         super();
@@ -16,6 +17,11 @@ export class AuthServiceApiService extends BaseService {
 
     createUser(userData) {
         return this.http.post("/users/sign-up", userData);
+    }
+
+    async getJobPostsForCurrentUser(userId) {
+        const allJobPosts = await this.getAllJobPost();
+        return allJobPosts.filter((jobPost) => jobPost.client.id === userId);
     }
 
     isLoggedIn() {

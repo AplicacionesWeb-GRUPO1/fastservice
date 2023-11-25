@@ -13,6 +13,7 @@ class LoginData {
 }
 
 export default class SignUpData {
+
     constructor(name, lastName, userName, password, phone, birthdayDate, role) {
         this.name = name;
         this.lastName = lastName;
