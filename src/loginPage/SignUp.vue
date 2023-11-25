@@ -47,6 +47,16 @@ import SignUpData from "@/Interfaces/Auth";
 const REQUIRED_FIELD_MESSAGE = "Todos los campos son obligatorios. Por favor, complete todos los campos.";
 const INVALID_PHONE_MESSAGE = "El número de teléfono debe tener exactamente 9 dígitos.";
 
+// Función para formatear la fecha
+function formatearFecha(fecha) {
+  const date = new Date(fecha);
+  const dia = ('0' + date.getDate()).slice(-2);
+  const mes = ('0' + (date.getMonth() + 1)).slice(-2);
+  const año = date.getFullYear();
+
+  return `${dia}/${mes}/${año}`;
+}
+
 export default {
   components: {
     Card,
@@ -93,6 +103,7 @@ export default {
 
         // prefijo +51 Perú
         const formattedPhone = "+51" + this.phone;
+        const formattedBirthdayDate = this.birthdayDate ? formatearFecha(this.birthdayDate) : null;
 
         const signUpData = new SignUpData(
             this.name,
@@ -100,7 +111,7 @@ export default {
             this.username,
             this.password,
             formattedPhone,
-            this.birthdayDate,
+            formattedBirthdayDate,
             this.role
         );
 
@@ -134,6 +145,7 @@ export default {
     },
   },
 };
+
 </script>
 
 <style>
