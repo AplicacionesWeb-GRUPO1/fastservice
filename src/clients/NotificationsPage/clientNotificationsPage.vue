@@ -1,6 +1,6 @@
 <template>
   <div>
-    <card-component
+    <client-notifications-card
         v-for="notificacion in notifications"
         :key="notificacion.id"
         :nombre="notificacion.expert.name"
@@ -18,10 +18,14 @@
 <script>
 import CardComponent from '@/clients/NotificationsPage/Components/clientNotificationCard.vue';
 import {ContractServiceApiService} from "@/services/ContractService-api.service";
+import ClientCardNotification from "@/clients/NotificationsPage/Components/clientNotificationCard.vue";
+import ClientNotificationsCard from "@/clients/NotificationsPage/Components/clientNotificationCard.vue";
 
 export default {
   name: 'ClientNotifications',
   components: {
+    ClientNotificationsCard,
+    ClientCardNotification,
     CardComponent,
   },
   data() {
