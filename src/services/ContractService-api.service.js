@@ -52,6 +52,7 @@ export class ContractServiceApiService extends BaseService {
     async changeToCancelado(contractData, ) {
         return this.updateState(contractData, 'cancelado');
     }
+
     async getByStatus(user, status) {
         const filterByStatus = (contract) => {
             if (user.role === 'client') {
@@ -80,7 +81,9 @@ export class ContractServiceApiService extends BaseService {
     async getContractsCancelado(user) {
         return this.getByStatus(user, 'cancelado');
     }
-
+    async getContractsTrabajando(user) {
+        return this.getByStatus(user, 'trabajando');
+    }
   
 }
 

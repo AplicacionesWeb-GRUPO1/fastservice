@@ -1,9 +1,35 @@
 <template>
   <div class="job-posts">
-    <Card v-for="jobPost in filteredJobPosts" :key="jobPost.id" class="job-card">
-      <div class="edit-button" @click="startEditing(jobPost)">
-        ✏️ Editar
+    <button class="create-button" @click="openDialog">Crear Publicación</button>
+
+    <pv-dialog v-model:visible="dialogVisible" modal header="Agregar Publicacion" :style="{ width: '50vw' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+      <div class="form-container">
+        <form>
+          <div class="form-group">
+            <label for="address">Dirección</label>
+            <input id="address" type="text" v-model="editedPost.address" @input="savePost" />
+          </div>
+          <div class="form-group">
+            <label for="title">Título</label>
+            <input id="title" type="text" v-model="editedPost.title" @input="savePost" />
+          </div>
+          <div class="form-group">
+            <label for="description">Descripción</label>
+            <textarea id="description" v-model="editedPost.description" @input="savePost"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="image">URL de la imagen</label>
+            <input id="image" type="text" v-model="editedPost.imageUrl" @input="savePost" />
+          </div>
+          <div class="form-group">
+            <a href="#" @click="postData">Guardar</a>
+          </div>
+        </form>
       </div>
+    </pv-dialog>
+
+    <Card v-for="jobPost in filteredJobPosts" :key="jobPost.id" class="job-card">
+      <div v-if="jobPost.isPublished">
       <div class="p-fluid">
         <div class="job-post-content">
           <div class="image-section">
@@ -41,6 +67,7 @@
         </div>
         <button v-if="editingPost === jobPost.id" @click="saveChanges(jobPost)">Guardar</button>
       </div>
+      </div>
     </Card>
   </div>
 </template>
@@ -50,10 +77,20 @@ import {JobPublicationsApiService} from "@/services/JobPublications-api.service"
 
 export default {
   name: 'Publications',
+  components: {},
   data() {
     return {
       job_posts: [],
       editingPost: null,
+      dialogVisible: false,
+      editedPost: {
+        address: '',
+        title: '',
+        description: '',
+        image: 'asd',
+        clientId: 0,
+        isPublished: true
+      }
     };
   },
   methods: {
@@ -68,8 +105,50 @@ export default {
         console.error("Error fetching job posts:", error);
       }
     },
+    handleFileUpload(event) {
+      const file = event.target.files[0];
+      this.convertImageToBase64(file);
+    },
+
+    convertImageToBase64(file) {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        this.editedPost.image = reader.result;
+        console.log('Imagen convertida a base64:', this.editedPost.image);
+      };
+
+      reader.readAsDataURL(file);
+    },
+    savePost() {
+      console.log('Guardando...');
+
+      console.log(this.editedPost); // Aquí tendrías la información actualizada
+    },
+    postData() {
+      this.editedPost.clientId = JSON.parse(localStorage.getItem('user')).id;
+      console.log("ID", this.editedPost.clientId);
+      const publicationService = new JobPublicationsApiService();
+      console.log("SE GUARDARA", this.editedPost);
+      publicationService.createPublication(this.editedPost)
+          .then(response => {
+            console.log(response);
+            this.closeDialog();
+          })
+          .catch(error => {
+            console.log(error);
+          });
+    },
     markAsCompleted(jobPost) {
       jobPost.isPublished = false;
+      const publicationService = new JobPublicationsApiService();
+      publicationService.updatePublications(jobPost)
+          .then(response => {
+            console.log(response);
+          })
+          .catch(error => {
+            console.log(error);
+          });
     },
     startEditing(jobPost) {
       this.editingPost = jobPost.id;
@@ -77,8 +156,11 @@ export default {
     saveChanges(jobPost) {
       this.editingPost = null;
     },
-    createPost(){
-      //
+    closeDialog(){
+      this.dialogVisible = false;
+    },
+    openDialog() {
+      this.dialogVisible = true;
     }
   },
   created() {
@@ -140,47 +222,50 @@ export default {
   flex-direction: column;
   margin-left: 15px;
 }
-
-.title {
-  margin-bottom: 10px;
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.label {
-  font-weight: bold;
-}
-
-.completed-status {
-  color: green;
-  margin-top: 5px;
-}
-
-button {
-  background-color: #d98100;
+.create-button {
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 5px 10px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
-
-.edit-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  background-color: #e0e0e0;
-  padding: 5px;
-  border-radius: 5px;
+.form-container {
+  padding: 20px;
 }
 
-.edit-input {
-  width: 20em;
-  height: 30px;
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
 }
 </style>
