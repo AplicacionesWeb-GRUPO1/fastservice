@@ -84,10 +84,14 @@ export default {
     },
     async acceptJob(jobPost) {
       try {
+        if (!jobPost) {
+          console.error("jobPost es null o indefinido");
+          return;
+        }
         const currentUser = JSON.parse(localStorage.getItem('user'));
+        console.log("currentUser", currentUser);
         const contractService = new ContractServiceApiService();
-
-        // Crear un contrato con la información necesaria
+        console.log("jobPost", jobPost)
         const contractData = {
           publicationId: jobPost.id,
           expertId: currentUser.id,
@@ -95,11 +99,10 @@ export default {
           state: "progress",
           date: formatearFecha(new Date().toISOString()),
         };
+        console.log("publicationId", contractData.publicationId)
 
-        // Llamada al servicio para crear el contrato
         const createdContract = await contractService.createContract(contractData);
 
-        // Otros pasos después de aceptar el trabajo...
         console.log("Contrato creado:", createdContract);
         
 

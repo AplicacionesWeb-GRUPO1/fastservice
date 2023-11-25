@@ -13,7 +13,7 @@
         <p class="blue-text">{{ ` ${trabajoSolicitado}` }}</p>
         <p class="gray-text"> En Progreso </p>
       </div>
-      <button v-if="estadoTrabajo === 'aceptado'" @click="pay">Pagar</button>
+      <button v-if="estadoTrabajo === 'terminado'" @click="aceptar">Pagar</button>
     </div>
   </div>
 </template>
@@ -28,6 +28,9 @@ export default {
     foto: String,
   },
   methods: {
+    aceptar() {
+      this.$emit('aceptar');
+    }
   },
 };
 </script>

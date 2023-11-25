@@ -8,8 +8,8 @@
         :trabajoSolicitado="hiredService.publication.description"
         :estadoTrabajo="hiredService.state"
         :foto="hiredService.publication.image"
-        @aceptar="eliminarTarjeta(hiredService.id)"
-        @rechazar="eliminarTarjeta(hiredService.id)"
+        @aceptar="AceptarContrato(hiredService)"
+        @rechazar="AceptarContrato(hiredService)"
       />
   </div>
 </template>
@@ -31,19 +31,28 @@ export default {
     this.getHiredServices();
   },
   methods: {
-     async getHiredServices() {
+    async getHiredServices() {
       const currentUser = JSON.parse(localStorage.getItem('user'));
       const contractServiceApiService = new ContractServiceApiService();
       try {
-        const contracts = await contractServiceApiService.getContractsAceptado(currentUser);
-        this.hiredServices = contracts;
-        console.log("asd", contracts);
+        const contractsTrabajando = await contractServiceApiService.getContractsTrabajando(currentUser);
+        const contractsTerminado = await contractServiceApiService.getContractsTerminado(currentUser);
+
+        this.hiredServices = [...contractsTerminado, ...contractsTrabajando];
+
+        console.log("Todos los contratos:", this.hiredServices);
       } catch (error) {
-        console.error("Error fetching job posts:", error);
+        console.error("Error obteniendo contratos:", error);
       }
     },
-    eliminarTarjeta(id) {
-      this.hiredServices = this.hiredServices.filter((hiredService) => hiredService.id !== id);
+    async AceptarContrato(hiredService) {
+      const contractServiceApiService = new ContractServiceApiService();
+      try {
+        await contractServiceApiService.changeToRechazado(hiredService);
+        console.log("contratoaceptado");
+      } catch (error) {
+        console.error("Error updating contract:", error);
+      }
     },
   },
 };

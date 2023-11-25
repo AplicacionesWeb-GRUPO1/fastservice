@@ -26,7 +26,7 @@ export default {
       const contractService = new ContractServiceApiService();
 
       try {
-        await contractService.changeToAceptado(contract)
+        await contractService.changeToTerminado(contract)
         console.log("terminado");
       } catch (error) {
         console.error("Error updating contract:", error);
