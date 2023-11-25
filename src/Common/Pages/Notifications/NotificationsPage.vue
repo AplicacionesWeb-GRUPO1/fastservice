@@ -17,7 +17,7 @@ export default {
 <template>
   <div>
     <div v-if="user.role === 'client'">
-      <ClientPayments/>
+      <ClientNotifications/>
     </div>
     <div v-else>
       <ExpertNotifications/>
