@@ -24,7 +24,7 @@ export default {
   name: 'SideMenu',
   components: {
     LoginPage,
-    SideBarContent, ClientProfilePage, PageShowAppointmentsContent, PageFavoritesExperts, HomeContent, navBar},
+    SideBarContent, ClientProfilePage, PageShowAppointmentsContent, PageFavoritesExperts, HomeContent},
   data() {
     return {
       users: [],
