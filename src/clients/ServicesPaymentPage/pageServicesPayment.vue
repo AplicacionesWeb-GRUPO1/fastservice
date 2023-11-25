@@ -2,7 +2,7 @@
 import {ExpertApiService} from "@/services/expert-api.service";
 
 export default {
-  name: "ServicesPayment-page",
+  name: "ClientPayments",
   data() {
     return {
       expert: [],

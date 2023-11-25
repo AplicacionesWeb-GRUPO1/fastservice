@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'ExpertHome'
+  name: 'ExpertNotifications'
 }
 </script>
 
@@ -8,6 +8,6 @@ export default {
 
 </template>
 
-<style scoped>
+<style>
 
 </style>

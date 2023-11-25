@@ -3,13 +3,13 @@ import PageShowAppointmentsContent from "@/clients/ExpertsAppointmentsScreen/pag
 import GridProfilesContent from "@/GeneralComponents/gridProfiles-content.component.vue";
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
 import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.component.vue";
-import PageServicesPayment from "@/clients/ServicesPaymentPage/pageServicesPayment.vue";
-import NotificationsPage from "@/clients/NotificationsPage/notifications.vue";
+import NotificationsPage from "@/clients/NotificationsPage/clientNotificationsPage.vue";
 import HiredServices from "@/clients/HiredServices/hiredServices.vue";
 import Publications from "@/clients/ClientPublications/publicationPosts.vue";
 import Login from "@/loginPage/Login.vue";
 import SignUp from "@/loginPage/SignUp.vue";
 import HomePage from "@/Common/Pages/Home/HomePage.vue";
+import PaymentsPage from "@/Common/Pages/Payments/PaymentsPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,7 +33,7 @@ const router = createRouter({
     {
       path: '/servicespayment',
       name: 'ServicesPayment',
-      component: PageServicesPayment,
+      component: PaymentsPage,
       meta: { requiresAuth: true },
     },
     {
@@ -61,7 +61,7 @@ const router = createRouter({
       meta: { requiresAuth: true },
     },
     {
-      path: '/clients/notifications',
+      path: '/notifications',
       name: 'Notifications',
       component: NotificationsPage,
       meta: { requiresAuth: true },

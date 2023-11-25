@@ -20,6 +20,7 @@ import CardComponent from '@/clients/NotificationsPage/Components/card.vue';
 import {ContractServiceApiService} from "@/services/ContractService-api.service";
 
 export default {
+  name: 'ClientNotifications',
   components: {
     CardComponent,
   },
