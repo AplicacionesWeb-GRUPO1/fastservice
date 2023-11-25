@@ -2,6 +2,7 @@
   <div class="main-container">
     <section class="section">
       <h2>Tipos de Servicios</h2>
+      <br>
       <div class="tool-cards">
         <Card class="tool">
           <i class="pi pi-desktop"></i>
@@ -26,9 +27,10 @@
         </Card>
       </div>
     </section>
-
+    <br>
     <section class="section">
       <h2>Expertos elegidos para ti</h2>
+      <br>
       <div class="user-cards">
         <Card v-for="expert in experts" :key="expert.id" class="user-card">
           <div class="user-card-content">
@@ -37,7 +39,7 @@
             </div>
             <div class="user-info">
               <div class="user-name">{{ expert.name }}</div>
-              <div class="user-profession">Profesion: {{ expert.role }}</div>
+              <div class="user-profession">Profesion: {{ expert.specialty }}</div>
               <div class="user-rating">
                 <i class="pi pi-star" style="color: #FFD700; font-size: 20px;"></i>
                 {{ expert.rating }}
