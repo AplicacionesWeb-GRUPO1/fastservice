@@ -1,6 +1,6 @@
 <template>
   <div>
-    <card-component
+    <client-notifications-card
         v-for="notificacion in notifications"
         :key="notificacion.id"
         :nombre="notificacion.expert.name"
@@ -9,8 +9,8 @@
         :precio="notificacion.price"
         :fechaNotificacion="notificacion.date"
         :foto="notificacion.expert.avatar"
-        @aceptar="eliminarTarjeta(notificacion.id)"
-        @rechazar="eliminarTarjeta(notificacion.id)"
+        @aceptar="AceptarContrato(notificacion)"
+        @rechazar="RechazarContrato(notificacion)"
     />
   </div>
 </template>
@@ -18,19 +18,25 @@
 <script>
 import CardComponent from '@/clients/NotificationsPage/Components/clientNotificationCard.vue';
 import {ContractServiceApiService} from "@/services/ContractService-api.service";
+import ClientCardNotification from "@/clients/NotificationsPage/Components/clientNotificationCard.vue";
+import ClientNotificationsCard from "@/clients/NotificationsPage/Components/clientNotificationCard.vue";
 
 export default {
   name: 'ClientNotifications',
   components: {
+    ClientNotificationsCard,
+    ClientCardNotification,
     CardComponent,
   },
   data() {
     return {
       notifications: [],
+      contractServices: null
     };
   },
   created() {
     this.getNotifications();
+    this.contractServices= new ContractServiceApiService();
   },
   methods: {
     async getNotifications() {
@@ -44,8 +50,20 @@ export default {
         console.error("Error fetching job posts:", error);
       }
     },
-    eliminarTarjeta(id) {
-      this.notifications = this.notifications.filter((notificacion) => notificacion.id !== id);
+    async AceptarContrato(notificacion) {
+      try {
+        await this.contractServices.changeToAceptado(notificacion)
+        console.log("contratoaceptado");
+      } catch (error) {
+        console.error("Error updating contract:", error);
+      }
+    },
+    async  RechazarContrato(notificacion) {
+      try {
+        await this.contractServices.changeToRechazado(notificacion)
+      } catch (error) {
+        console.error("Error updating contract:", error);
+      }
     },
   },
 };

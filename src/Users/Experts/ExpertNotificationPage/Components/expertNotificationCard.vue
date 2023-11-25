@@ -1,3 +1,6 @@
+<script setup>
+
+</script>
 
 <template>
   <div class="card">
@@ -31,7 +34,7 @@
 
 <script>
 export default {
-  name: 'ClientNotificationsCard',
+  name: 'ExpertNotificationCard',
   props: {
     nombre: String,
     rol: String,

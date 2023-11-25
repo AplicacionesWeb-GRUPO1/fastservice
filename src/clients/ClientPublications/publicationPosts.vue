@@ -77,6 +77,9 @@ export default {
     saveChanges(jobPost) {
       this.editingPost = null;
     },
+    createPost(){
+      //
+    }
   },
   created() {
     this.getPostService();
