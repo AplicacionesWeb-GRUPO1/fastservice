@@ -1,9 +1,9 @@
 <template>
   <div>
-    <client-notifications-card
+    <expert-notification-card
         v-for="notificacion in notifications"
         :key="notificacion.id"
-        :nombre="notificacion.expert.name"
+        :nombre="notificacion.publication.client.name"
         :rol="notificacion.expert.specialty"
         :trabajoSolicitado="notificacion.publication.description"
         :precio="notificacion.price"
@@ -20,10 +20,12 @@ import CardComponent from '@/clients/NotificationsPage/Components/clientNotifica
 import ClientCardNotification from '@/clients/NotificationsPage/Components/clientNotificationCard.vue';
 import ClientNotificationsCard from '@/clients/NotificationsPage/Components/clientNotificationCard.vue';
 import {ContractServiceApiService} from "@/services/ContractService-api.service";
+import ExpertNotificationCard from "@/Users/Experts/ExpertNotificationPage/Components/expertNotificationCard.vue";
 
 export default {
   name: 'ExpertNotifications',
   components: {
+    ExpertNotificationCard,
     ClientNotificationsCard,
     ClientCardNotification,
     CardComponent,
@@ -52,7 +54,7 @@ export default {
     },
     async AceptarContrato(notificacion) {
       try {
-        await this.contractServices.changeToAceptado(notificacion)
+        await this.contractServices.changeToTrabajando(notificacion);
         console.log("contratoaceptado");
       } catch (error) {
         console.error("Error updating contract:", error);

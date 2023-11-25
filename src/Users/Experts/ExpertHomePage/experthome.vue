@@ -1,6 +1,7 @@
 <template>
-  <div class="expert-home">
+  <div class="expert-home mt-0">
     <Card v-for="jobPost in filteredJobPosts" :key="jobPost.id" class="job-card">
+      <div v-if="jobPost.isPublished">
       <div class="p-fluid">
         <div class="job-post-content">
           <div class="image-section">
@@ -41,6 +42,7 @@
           </div>
         </div>
         <button v-if="editingPost === jobPost.id" @click="saveChanges(jobPost)">Guardar</button>
+      </div>
       </div>
     </Card>
   </div>

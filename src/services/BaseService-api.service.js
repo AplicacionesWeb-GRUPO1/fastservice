@@ -38,6 +38,8 @@ export class BaseService {
         }
     }
 
+
+
     async getUsersByUsername(endpoint, username) {
         try {
             const response = await this.http.get(`/${endpoint}/getbyusername/${username}`);
@@ -47,6 +49,7 @@ export class BaseService {
             throw new Error(`Error getting users: ${error}`);
         }
     }
+
 
     async getAllDataByUser(user, filterFunction, endpoint) {
         const allItems = await this.getAll(endpoint);

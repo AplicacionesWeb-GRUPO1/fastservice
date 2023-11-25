@@ -24,7 +24,7 @@ export default {
   name: 'SideMenu',
   components: {
     LoginPage,
-    SideBarContent, ClientProfilePage, PageShowAppointmentsContent, PageFavoritesExperts, HomeContent, navBar},
+    SideBarContent, ClientProfilePage, PageShowAppointmentsContent, PageFavoritesExperts, HomeContent},
   data() {
     return {
       users: [],
@@ -37,7 +37,6 @@ export default {
     if (storedUser) {
       this.loggedUser = JSON.parse(storedUser);
       this.onlogged = true;
-      this.$router.push('/home');
     } else {
       this.onlogged = false;
     }

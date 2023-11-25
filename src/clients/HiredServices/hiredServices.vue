@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="m-0">
     <card-component
         v-for="hiredService in hiredServices"
         :key="hiredService.id"
@@ -35,7 +35,7 @@ export default {
       const currentUser = JSON.parse(localStorage.getItem('user'));
       const contractServiceApiService = new ContractServiceApiService();
       try {
-        const contracts = await contractServiceApiService.getContractsAceptado(currentUser  );
+        const contracts = await contractServiceApiService.getContractsAceptado(currentUser);
         this.hiredServices = contracts;
         console.log("asd", contracts);
       } catch (error) {
