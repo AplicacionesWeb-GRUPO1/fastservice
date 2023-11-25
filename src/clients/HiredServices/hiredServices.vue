@@ -7,7 +7,7 @@
         :rol="hiredService.expert.specialty"
         :trabajoSolicitado="hiredService.publication.description"
         :estadoTrabajo="hiredService.state"
-        :foto="hiredService.expert.avatar"
+        :foto="hiredService.publication.image"
         @aceptar="eliminarTarjeta(hiredService.id)"
         @rechazar="eliminarTarjeta(hiredService.id)"
       />
