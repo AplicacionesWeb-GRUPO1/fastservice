@@ -47,7 +47,7 @@ export default {
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 4px;
+  padding: 0px;
 }
 
 .search-icon {

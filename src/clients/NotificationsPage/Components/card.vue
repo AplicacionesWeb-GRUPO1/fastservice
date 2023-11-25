@@ -16,10 +16,11 @@
         <p class="blue-text">{{ `${nombre}` }}</p>
         <p>{{ `solicitó el trabajo de` }}</p>
       </div>
+      <br>
       <div class="first-line">
         <p class="blue-text">{{ ` "${trabajoSolicitado}"` }}</p>
         <p>{{ `a` }}</p>
-        <p class="blue-text">{{ `${precio.toFixed(2)}` }}</p>
+        <p class="blue-text">{{ `${precio}` }}$</p>
       </div>
       <p class="gray-text">{{ `${fechaNotificacion}` }}</p>
       <div class="button-container">
@@ -37,7 +38,7 @@ export default {
     nombre: String,
     rol: String,
     trabajoSolicitado: String,
-    precio: Number,
+    precio: String,
     fechaNotificacion: String,
     foto: String,
   },
@@ -74,13 +75,15 @@ export default {
 
 .left-content img{
   width: 100px;
+  height: 50%;
+  border-radius: 50%;
 }
 
 .card-right {
   flex: 3;
   display: flex;
   flex-direction: column;
-
+  margin-right:50px;
 }
 
 .first-line{
