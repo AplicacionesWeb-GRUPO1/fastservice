@@ -1,6 +1,6 @@
 <script>
-import ExpertHome from "@/expert/ExpertHomePage/experthome.vue";
-import ClientHome from "@/clients/ClientHomePage/home.content.component.vue";
+import ExpertHome from "@/Users/Experts/ExpertHomePage/experthome.vue";
+import ClientHome from "@/Users/ClientHomePage/home.content.component.vue";
 
 export default {
   name: 'HomePage',

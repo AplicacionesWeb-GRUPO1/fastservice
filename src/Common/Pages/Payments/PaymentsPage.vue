@@ -1,7 +1,7 @@
 <script>
 
 import ClientPayments from "@/clients/ServicesPaymentPage/pageServicesPayment.vue";
-import ExpertPayments from "@/expert/ExpertPaymentPage/ExpertPaymentPage.vue";
+import ExpertPayments from "@/Users/Experts/ExpertPaymentPage/ExpertPaymentPage.vue";
 
 export default {
   name: 'PaymentsPage',

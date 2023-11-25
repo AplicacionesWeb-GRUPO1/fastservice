@@ -1,6 +1,6 @@
 <script>
 import ClientNotifications from "@/clients/NotificationsPage/clientNotificationsPage.vue";
-import ExpertNotifications from "@/expert/ExpertNotificationPage/expertNotificationsPage.vue";
+import ExpertNotifications from "@/Users/Experts/ExpertNotificationPage/expertNotificationsPage.vue";
 import ClientPayments from "@/clients/ServicesPaymentPage/pageServicesPayment.vue";
 
 export default {
