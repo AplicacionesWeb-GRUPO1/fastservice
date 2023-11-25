@@ -17,11 +17,10 @@
 
 <script>
 import CardComponent from '@/clients/NotificationsPage/Components/card.vue';
-import { UserApiService } from "@/services/user-api.service";
-import {JobPublicationsApiService} from "@/services/JobPublications-api.service";
 import {ContractServiceApiService} from "@/services/ContractService-api.service";
 
 export default {
+  name: 'ClientNotifications',
   components: {
     CardComponent,
   },

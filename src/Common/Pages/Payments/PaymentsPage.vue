@@ -1,11 +1,11 @@
 <script>
-import ClientNotifications from "@/clients/NotificationsPage/clientNotificationsPage.vue";
-import ExpertNotifications from "@/expert/ExpertNotificationPage/expertNotificationsPage.vue";
+
 import ClientPayments from "@/clients/ServicesPaymentPage/pageServicesPayment.vue";
+import ExpertPayments from "@/expert/ExpertPaymentPage/ExpertPaymentPage.vue";
 
 export default {
-  name: 'NotificationsPage',
-  components: {ClientPayments, ExpertNotifications, ClientNotifications},
+  name: 'PaymentsPage',
+  components: {ExpertPayments, ClientPayments},
   data() {
     return {
       user : JSON.parse(localStorage.getItem('user'))
@@ -20,7 +20,7 @@ export default {
       <ClientPayments/>
     </div>
     <div v-else>
-      <ExpertNotifications/>
+      <ExpertPayments/>
     </div>
   </div>
 </template>
