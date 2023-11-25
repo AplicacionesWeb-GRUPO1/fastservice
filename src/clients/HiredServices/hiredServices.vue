@@ -3,11 +3,11 @@
     <card-component
         v-for="hiredService in hiredServices"
         :key="hiredService.id"
-        :nombre="hiredService.nombre"
-        :rol="hiredService.rol"
-        :trabajoSolicitado="hiredService.trabajoSolicitado"
-        :estadoTrabajo="hiredService.status"
-        :foto="hiredService.foto"
+        :nombre="hiredService.expert.name"
+        :rol="hiredService.expert.specialty"
+        :trabajoSolicitado="hiredService.publication.description"
+        :estadoTrabajo="hiredService.state"
+        :foto="hiredService.expert.avatar"
         @aceptar="eliminarTarjeta(hiredService.id)"
         @rechazar="eliminarTarjeta(hiredService.id)"
       />
@@ -16,7 +16,6 @@
 
 <script>
 import CardComponent from '@/clients/HiredServices/Components/card.vue';
-import { UserApiService } from "@/services/user-api.service";
 import {ContractServiceApiService} from "@/services/ContractService-api.service";
 
 export default {

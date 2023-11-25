@@ -141,6 +141,8 @@ export default {
 
 .left-content img{
   width: 100px;
+  height: 50%;
+  border-radius: 50%;
 }
 
 .card-right {
