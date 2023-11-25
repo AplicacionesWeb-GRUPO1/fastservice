@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import HomeContent from "@/clients/ClientHomePage/home.content.component.vue";
-import navBar from "@/expert/pages/navBar.component.vue";
+import HomeContent from "@/Users/ClientHomePage/home.content.component.vue";
+import navBar from "@/Users/Experts/pages/navBar.component.vue";
 import PageFavoritesExperts from "@/clients/FavoritesExpertsPage/pageFavoritesExperts.vue";
 import PageShowAppointmentsContent from "@/clients/ExpertsAppointmentsScreen/pageShowAppointments-conten.component.vue";
 import ClientProfilePage from "@/clients/ClientProfilePage/clientProfile-page.component.vue";
@@ -37,6 +37,7 @@ export default {
     if (storedUser) {
       this.loggedUser = JSON.parse(storedUser);
       this.onlogged = true;
+      this.$router.push('/home');
     } else {
       this.onlogged = false;
     }
@@ -44,10 +45,7 @@ export default {
   methods: {
     getSource(){
     }
-
   },
-
-
 }
 </script>
 

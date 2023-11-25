@@ -15,5 +15,6 @@ export class JobPublicationsApiService extends BaseService {
         const filterFunction = (jobPost) => jobPost.client.id === userId;
         return this.getAllDataByUserId(userId, filterFunction, this.endpoint);
     }
+
 }
 

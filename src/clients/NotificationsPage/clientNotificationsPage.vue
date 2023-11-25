@@ -3,12 +3,12 @@
     <card-component
         v-for="notificacion in notifications"
         :key="notificacion.id"
-        :nombre="notificacion.nombre"
-        :rol="notificacion.rol"
-        :trabajoSolicitado="notificacion.trabajoSolicitado"
-        :precio="notificacion.precio"
-        :fechaNotificacion="notificacion.fechaNotificacion"
-        :foto="notificacion.foto"
+        :nombre="notificacion.expert.name"
+        :rol="notificacion.expert.specialty"
+        :trabajoSolicitado="notificacion.publication.description"
+        :precio="notificacion.price"
+        :fechaNotificacion="notificacion.date"
+        :foto="notificacion.expert.avatar"
         @aceptar="eliminarTarjeta(notificacion.id)"
         @rechazar="eliminarTarjeta(notificacion.id)"
     />
@@ -16,12 +16,11 @@
 </template>
 
 <script>
-import CardComponent from '@/clients/NotificationsPage/Components/card.vue';
-import { UserApiService } from "@/services/user-api.service";
-import {JobPublicationsApiService} from "@/services/JobPublications-api.service";
+import CardComponent from '@/clients/NotificationsPage/Components/clientNotificationCard.vue';
 import {ContractServiceApiService} from "@/services/ContractService-api.service";
 
 export default {
+  name: 'ClientNotifications',
   components: {
     CardComponent,
   },

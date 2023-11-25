@@ -6,7 +6,7 @@
         :nombre="hiredService.nombre"
         :rol="hiredService.rol"
         :trabajoSolicitado="hiredService.trabajoSolicitado"
-        :estadoTrabajo="hiredService.estadoTrabajo"
+        :estadoTrabajo="hiredService.status"
         :foto="hiredService.foto"
         @aceptar="eliminarTarjeta(hiredService.id)"
         @rechazar="eliminarTarjeta(hiredService.id)"

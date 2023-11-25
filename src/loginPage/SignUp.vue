@@ -42,7 +42,7 @@ import InputText from "@/loginPage/components/InputText.vue";
 import InputPasswordText from "@/loginPage/components/InputPasswordText.vue";
 import Calendar from 'primevue/calendar';
 import { AuthServiceApiService } from "@/services/AuthService-api.service";
-import SignUpData from "@/router/Auth";
+import SignUpData from "@/Interfaces/Auth";
 
 const REQUIRED_FIELD_MESSAGE = "Todos los campos son obligatorios. Por favor, complete todos los campos.";
 const INVALID_PHONE_MESSAGE = "El número de teléfono debe tener exactamente 9 dígitos.";
