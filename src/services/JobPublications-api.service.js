@@ -16,5 +16,13 @@ export class JobPublicationsApiService extends BaseService {
         return this.getAllDataByUserId(userId, filterFunction, this.endpoint);
     }
 
+    async createPublication(publicationData) {
+        return this.create(this.endpoint, publicationData);
+    }
+
+    async updatePublication(publicationData, publicationId  ) {
+        return this.update(this.endpoint, publicationId, publicationData);
+    }
+
 }
 
