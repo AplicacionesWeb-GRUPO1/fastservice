@@ -1,13 +1,13 @@
 <template>
   <div class="job-posts">
-    <Card v-for="jobPost in job_posts" :key="jobPost.id" class="job-card">
+    <Card v-for="jobPost in filteredJobPosts" :key="jobPost.id" class="job-card">
       <div class="edit-button" @click="startEditing(jobPost)">
         ✏️ Editar
       </div>
       <div class="p-fluid">
         <div class="job-post-content">
           <div class="image-section">
-            <img :src="jobPost.service_image" :alt="jobPost.image_description" class="image" />
+            <img :src="jobPost.image" :alt="jobPost.title" class="image" />
             <div class="image-description">{{ jobPost.title }}</div>
           </div>
           <div class="details-section">
@@ -21,20 +21,20 @@
               <div class="location">
                 <label class="label">Dirección</label>
                 <div class="content" v-if="editingPost === jobPost.id">
-                  <input class="edit-input" v-model="jobPost.location" />
+                  <input class="edit-input" v-model="jobPost.address" />
                 </div>
-                <div class="content" v-else>{{ jobPost.location }}</div>
+                <div class="content" v-else>{{ jobPost.address }}</div>
               </div>
             </div>
             <div class="description">
               <label class="label">Descripción del servicio</label>
               <div class="content" v-if="editingPost === jobPost.id">
-                <textarea class="edit-input" v-model="jobPost.service_description"></textarea>
+                <textarea class="edit-input" v-model="jobPost.description"></textarea>
               </div>
-              <div class="content" v-else>{{ jobPost.service_description }}</div>
+              <div class="content" v-else>{{ jobPost.description }}</div>
             </div>
             <div class="status">
-              <div v-if="jobPost.status === 'completed'" class="completed-status">Completado</div>
+              <div v-if="jobPost.isPublished === false" class="completed-status">Publicado</div>
               <button v-else @click="markAsCompleted(jobPost)">Marcar como finalizado</button>
             </div>
           </div>
@@ -69,7 +69,7 @@ export default {
       }
     },
     markAsCompleted(jobPost) {
-      jobPost.status = 'completed';
+      jobPost.isPublished = false;
     },
     startEditing(jobPost) {
       this.editingPost = jobPost.id;
@@ -80,6 +80,11 @@ export default {
   },
   created() {
     this.getPostService();
+  },
+  computed: {
+    filteredJobPosts() {
+      return this.job_posts.filter(jobPost => jobPost.isPublished);
+    }
   },
 }
 </script>
@@ -122,7 +127,7 @@ export default {
 }
 
 .image-description {
-  color: #0d3c61; /* Green text color */
+  color: #0d3c61;
   margin-top: 5px;
 }
 
