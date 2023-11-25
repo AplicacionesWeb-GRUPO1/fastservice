@@ -11,9 +11,9 @@ export class JobPublicationsApiService extends BaseService {
         return this.getAll(this.endpoint);
     }
 
-    async getAllPublicationsByUserId(userId) {
-        const filterFunction = (jobPost) => jobPost.client.id === userId;
-        return this.getAllDataByUserId(userId, filterFunction, this.endpoint);
+    async getAllPublicationsByUser(user) {
+        const filterFunction = (jobPost) => jobPost.client.id === user.id;
+        return this.getAllDataByUser(user, filterFunction, this.endpoint);
     }
 
     async createPublication(publicationData) {

@@ -61,7 +61,7 @@ export default {
       const currentUser = JSON.parse(localStorage.getItem('user'));
       const jobPublicationsApiService = new JobPublicationsApiService();
       try {
-        const jobPosts = await jobPublicationsApiService.getAllPublicationsByUserId(currentUser.id);
+        const jobPosts = await jobPublicationsApiService.getAllPublicationsByUser(currentUser);
         this.job_posts = jobPosts;
         console.log("job_posts", jobPosts);
       } catch (error) {

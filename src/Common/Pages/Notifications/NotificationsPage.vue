@@ -1,11 +1,10 @@
 <script>
 import ClientNotifications from "@/clients/NotificationsPage/clientNotificationsPage.vue";
 import ExpertNotifications from "@/Users/Experts/ExpertNotificationPage/expertNotificationsPage.vue";
-import ClientPayments from "@/clients/ServicesPaymentPage/pageServicesPayment.vue";
 
 export default {
   name: 'NotificationsPage',
-  components: {ClientPayments, ExpertNotifications, ClientNotifications},
+  components: { ExpertNotifications, ClientNotifications},
   data() {
     return {
       user : JSON.parse(localStorage.getItem('user'))

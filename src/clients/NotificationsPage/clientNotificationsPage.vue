@@ -43,7 +43,7 @@ export default {
       const currentUser = JSON.parse(localStorage.getItem('user'));
       const contractServiceApiService = new ContractServiceApiService();
       try {
-        const contractsNotifications = await contractServiceApiService.getContractsProgress(currentUser.id);
+        const contractsNotifications = await contractServiceApiService.getContractsProgress(currentUser);
         this.notifications = contractsNotifications;
         console.log("asd", contractsNotifications);
       } catch (error) {

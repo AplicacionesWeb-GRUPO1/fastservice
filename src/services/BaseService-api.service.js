@@ -50,7 +50,7 @@ export class BaseService {
         }
     }
 
-    async getAllDataByUserId(userId, filterFunction, endpoint) {
+    async getAllDataByUser(user, filterFunction, endpoint) {
         const allItems = await this.getAll(endpoint);
         return allItems.filter(filterFunction);
     }
