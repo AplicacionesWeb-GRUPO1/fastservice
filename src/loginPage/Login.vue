@@ -58,6 +58,7 @@ export default {
               this.$root.$data.onlogged = true;
               this.$router.push('/home');
               setTimeout(() => {
+                this.$router.push('/home');
                 window.location.reload();
               }, 500);
             }
