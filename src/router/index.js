@@ -62,7 +62,7 @@ const router = createRouter({
       meta: { requiresAuth: true },
     },
     {
-      path: '/notifications',
+      path: '/clients/notifications',
       name: 'Notifications',
       component: NotificationsPage,
       meta: { requiresAuth: true },
