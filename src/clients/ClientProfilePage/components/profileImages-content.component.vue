@@ -11,7 +11,7 @@ export default {
 <template >
   <section class="full BG_image relative ">
     <div class="image-content space-y-1 ">
-      <img class="profile_img" :src="avatar">
+      <img class="profile_img" :src="avatar" alt="">
       <p class="font-bold absolute top-100">{{name}}</p>
     </div>
   </section>

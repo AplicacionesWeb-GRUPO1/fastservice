@@ -27,10 +27,7 @@ export default {
           name: "Description",
         },
       ],
-      user_info: null,
-      newsApi: new ClientApiService(),
-      user:[],
-      publications:[],
+      user:{},
       responsiveOptions: [
         {
           breakpoint: '1199px',
@@ -55,7 +52,11 @@ export default {
   },
   methods: {
     getSource() {
-      this.user = localStorage.getItem('user');
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        this.user = JSON.parse(storedUser);
+        console.log(this.user.name);
+      }
     },
   },
 }

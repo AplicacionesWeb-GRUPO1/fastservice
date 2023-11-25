@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { UserApiService } from "@/services/user-api.service";
+import {JobPublicationsApiService} from "@/services/JobPublications-api.service";
 
 export default {
   name: 'Publications',
@@ -58,9 +58,12 @@ export default {
   },
   methods: {
     getPostService() {
-      const userApiService = new UserApiService();
-      userApiService.getSources().then((response) => {
-        this.job_posts = response.data.user_info.job_posts;
+      const currentUser = JSON.parse(localStorage.getItem('user'));
+      const jobPublicationsApiService = new JobPublicationsApiService();
+      jobPublicationsApiService.getAllJobPost().then((response) => {
+        this.job_posts = response;
+        this.job_posts = this.job_posts.filter((jobPost) => jobPost.client.id === currentUser.id);
+        console.log("job_posts",response);
       });
     },
     markAsCompleted(jobPost) {
