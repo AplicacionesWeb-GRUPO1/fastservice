@@ -33,7 +33,7 @@ const router = createRouter({
     {
       path: '/servicespayment',
       name: 'ServicesPayment',
-      component: PageServicesPayment,
+      component: PaymentsPage,
       meta: { requiresAuth: true },
     },
     {
