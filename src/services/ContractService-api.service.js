@@ -52,28 +52,33 @@ export class ContractServiceApiService extends BaseService {
     async changeToCancelado(contractData, ) {
         return this.updateState(contractData, 'cancelado');
     }
+    async getByStatus(user, status) {
+        const filterByStatus = (contract) => {
+            if (user.role === 'client') {
+                return contract.state === status && contract.publication.client.id === user.id;
+            } else if (user.role === 'expert') {
+                return contract.state === status && contract.expert.id === user.id;
+            }
+            // Maneja otros casos aquí si es necesario
+        };
 
-    async getByStatus(userId,status) {
-        const filterByStatus = (contract) =>
-            ((contract.state === status)&& (contract.publication.client.id === userId));
-        return this.getAllDataByUserId(userId, filterByStatus, this.endpoint);
+        return this.getAllDataByUser(user, filterByStatus, this.endpoint);
     }
 
-
-    async getContractsProgress(userId) {
-        return this.getByStatus(userId, 'progress');
+    async getContractsProgress(user) {
+        return this.getByStatus(user, 'progress');
     }
-    async getContractsRechazado(userId) {
-        return this.getByStatus(userId, 'rechazado');
+    async getContractsRechazado(user) {
+        return this.getByStatus(user, 'rechazado');
     }
-    async getContractsAceptado(userId) {
-        return this.getByStatus(userId, 'aceptado');
+    async getContractsAceptado(user) {
+        return this.getByStatus(user, 'aceptado');
     }
-    async getContractsTerminado(userId) {
-        return this.getByStatus(userId, 'terminado');
+    async getContractsTerminado(user) {
+        return this.getByStatus(user, 'terminado');
     }
-    async getContractsCancelado(userId) {
-        return this.getByStatus(userId, 'cancelado');
+    async getContractsCancelado(user) {
+        return this.getByStatus(user, 'cancelado');
     }
 
   
