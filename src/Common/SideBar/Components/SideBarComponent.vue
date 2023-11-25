@@ -15,7 +15,6 @@
               { name: 'Publications', icon: 'pi pi-send', link: '/publications' },
               { name: 'Contracted Services', icon: 'pi pi-wrench', link: '/clients/services' },
               { name: 'Notifications', icon: 'pi pi-bell', link: '/notifications' },
-              { name: 'Payments', icon: 'pi pi-credit-card', link: '/servicespayment' },
               { name: 'Log Out', icon: 'pi pi-sign-out', link: '/login' },
             ],
           },
@@ -26,7 +25,6 @@
               { name: 'Profile', icon: 'pi pi-user', link: '/profile' },
               { name: 'Works', icon: 'pi pi-briefcase', link: '/works' },
               { name: 'Notifications', icon: 'pi pi-bell', link: '/notifications' },
-              { name: 'Payments', icon: 'pi pi-credit-card', link: '/servicespayment' },
               { name: 'Log Out', icon: 'pi pi-sign-out', link: '/login' },
             ],
           }

@@ -1,5 +1,5 @@
 <template>
-  <div class="job-posts">
+  <div class="job-posts m-0">
     <button class="create-button" @click="openDialog">Crear Publicación</button>
 
     <pv-dialog v-model:visible="dialogVisible" modal header="Agregar Publicacion" :style="{ width: '50vw' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
@@ -72,7 +72,6 @@
   </div>
    <br>
   <div>
-    <button @click="toggleCreateForm">Nueva Publicación</button>
     <form v-if="showCreateForm" @submit.prevent="createPost">
       <div>
         <label for="newTitle">Título:</label>

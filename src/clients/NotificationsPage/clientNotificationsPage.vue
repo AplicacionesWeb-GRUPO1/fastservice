@@ -20,6 +20,7 @@ import CardComponent from '@/clients/NotificationsPage/Components/clientNotifica
 import {ContractServiceApiService} from "@/services/ContractService-api.service";
 import ClientCardNotification from "@/clients/NotificationsPage/Components/clientNotificationCard.vue";
 import ClientNotificationsCard from "@/clients/NotificationsPage/Components/clientNotificationCard.vue";
+import {JobPublicationsApiService} from "@/services/JobPublications-api.service";
 
 export default {
   name: 'ClientNotifications',
@@ -50,9 +51,21 @@ export default {
         console.error("Error fetching job posts:", error);
       }
     },
+    QuitarPublicacion( publication){
+      publication.isPublished = false;
+      const publicationService = new JobPublicationsApiService();
+      publicationService.updatePublications(publication)
+          .then(response => {
+            console.log(response);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+    },
     async AceptarContrato(notificacion) {
       try {
         await this.contractServices.changeToAceptado(notificacion)
+        this.QuitarPublicacion(notificacion.publication);
         console.log("contratoaceptado");
       } catch (error) {
         console.error("Error updating contract:", error);
