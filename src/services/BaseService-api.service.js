@@ -12,7 +12,6 @@ export class BaseService {
         this.http.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
 
-
     async getAll(endpoint) {
         try {
             const response = await this.http.get(`/${endpoint}`);
@@ -21,7 +20,6 @@ export class BaseService {
             throw new Error(`Error getting users: ${error}`);
         }
     }
-
     async create(endpoint, data) {
         try {
             const response = await this.http.post(`/${endpoint}`, data);

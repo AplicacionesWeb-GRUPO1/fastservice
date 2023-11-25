@@ -84,6 +84,6 @@ export class ContractServiceApiService extends BaseService {
     async getContractsTrabajando(user) {
         return this.getByStatus(user, 'trabajando');
     }
-  
+
 }
 

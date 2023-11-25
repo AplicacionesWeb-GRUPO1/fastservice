@@ -70,6 +70,30 @@
       </div>
     </Card>
   </div>
+   <br>
+  <div>
+    <button @click="toggleCreateForm">Nueva Publicación</button>
+    <form v-if="showCreateForm" @submit.prevent="createPost">
+      <div>
+        <label for="newTitle">Título:</label>
+        <input v-model="newPost.title" type="text" id="newTitle" required />
+      </div>
+      <div>
+        <label for="newAddress">Dirección:</label>
+        <input v-model="newPost.address" type="text" id="newAddress" required />
+      </div>
+      <div>
+        <label for="newDescription">Descripción del servicio:</label>
+        <textarea v-model="newPost.description" id="newDescription" required></textarea>
+      </div>
+      <div>
+        <label for="newImage">Imagen:</label>
+        <input type="file" @change="handleImageChange" accept="image/*" id="newImage" />
+      </div>
+      <button type="submit">Crear Publicación</button>
+    </form>
+  </div>
+  <br>
 </template>
 
 <script>
@@ -162,6 +186,7 @@ export default {
     openDialog() {
       this.dialogVisible = true;
     }
+
   },
   created() {
     this.getPostService();
